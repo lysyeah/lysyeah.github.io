@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hello,world 출력 함수 만들기 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="12345678910111213def hello():   &quot;&quot;&quot; 파이썬 코드는위에서 아래로 순차적으로 실행되기 때문에함수를 먼저 정의하고 난 뒤에함수를 호출 해야한다.&quot;&quot;&quot;  print(&amp;#x27;hello,world&amp;#x27;)hello()## 독스트링 위치 잘 보자.## 콜론 다음에 적으니까 결과값에">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello,world 출력 함수 만들기">
+<meta property="og:url" content="https://lysyeah.github.io/2022/06/28/day0628_assignment/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="12345678910111213def hello():   &quot;&quot;&quot; 파이썬 코드는위에서 아래로 순차적으로 실행되기 때문에함수를 먼저 정의하고 난 뒤에함수를 호출 해야한다.&quot;&quot;&quot;  print(&amp;#x27;hello,world&amp;#x27;)hello()## 독스트링 위치 잘 보자.## 콜론 다음에 적으니까 결과값에">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-06-28T08:10:00.000Z">
+<meta property="article:modified_time" content="2022-06-29T08:05:24.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://lysyeah.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-day0628_assignment" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/06/28/day0628_assignment/" class="article-date">
+  <time class="dt-published" datetime="2022-06-28T08:10:00.000Z" itemprop="datePublished">2022-06-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Hello,world 출력 함수 만들기
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">hello</span>(): </span><br><span class="line">  <span class="string">&quot;&quot;&quot; 파이썬 코드는</span></span><br><span class="line"><span class="string">위에서 아래로 순차적으로 실행되기 때문에</span></span><br><span class="line"><span class="string">함수를 먼저 정의하고 난 뒤에</span></span><br><span class="line"><span class="string">함수를 호출 해야한다.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;hello,world&#x27;</span>)</span><br><span class="line">hello()</span><br><span class="line"></span><br><span class="line"><span class="comment">## 독스트링 위치 잘 보자.</span></span><br><span class="line"><span class="comment">## 콜론 다음에 적으니까 결과값에 글이 적히지 않는다.</span></span><br><span class="line"><span class="comment">## 가장 밑에 적으니 결과값에 나와서 보기 불편하다.</span></span><br><span class="line"><span class="comment">## &#x27;&#x27;&#x27;보다 &quot;&quot;&quot;를 권장한다고 한다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>hello,world
+</code></pre>
+<h2 id="29-2-덧셈-함수-만들기"><a href="#29-2-덧셈-함수-만들기" class="headerlink" title="29.2 덧셈 함수 만들기"></a>29.2 덧셈 함수 만들기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a,b</span>):</span><br><span class="line">  <span class="built_in">print</span>( a + b )</span><br><span class="line"></span><br><span class="line">add( <span class="number">3</span>, <span class="number">4</span> )</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>7
+</code></pre>
+<p>29.3 함수의 결과를 반환하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a,b</span>):<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  return a+b</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">x = add(10,20)</span></span><br><span class="line"><span class="string">x</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>30
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">not_ten</span>(<span class="params">a</span>):</span><br><span class="line"> <span class="string">&quot;&quot;&quot; not_ten 함수에 5를 넣으면  </span></span><br><span class="line"><span class="string">5가 출력된다.</span></span><br><span class="line"><span class="string">하지만 10을 넣으면 if가 만족되므로</span></span><br><span class="line"><span class="string">return이 되는것이고</span></span><br><span class="line"><span class="string">출력이 되지 않는다.</span></span><br><span class="line"><span class="string">즉, 밑 함수로 내려가지않는다.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> a == <span class="number">10</span>:</span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  <span class="built_in">print</span>(a, <span class="string">&#x27;입니다&#x27;</span>, sep=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line">not_ten(<span class="number">5</span>)</span><br><span class="line">not_ten(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">##물결 밑줄 왜 생겼을까??</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>5입니다
+</code></pre>
+<p>##29.4 함수에서 값을 여러 개 반환하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add_sub</span>(<span class="params">a,b</span>):</span><br><span class="line">  <span class="string">&quot;&quot;&quot;아직 이해가 잘 되지 않는다. </span></span><br><span class="line"><span class="string">  계속 쓰다보면 익숙해지겠지</span></span><br><span class="line"><span class="string">  &quot;&quot;&quot;</span></span><br><span class="line">  <span class="keyword">return</span> a+b, a-b</span><br><span class="line"></span><br><span class="line">x, y = add_sub(<span class="number">10</span>,<span class="number">20</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(y)</span><br></pre></td></tr></table></figure>
+
+<pre><code>30
+-10
+</code></pre>
+<ul>
+<li>참고 : 값 여러 개를 직접 반환하</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">one_two</span>():</span><br><span class="line">  <span class="keyword">return</span>[<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">x, y = one_two()</span><br><span class="line"><span class="built_in">print</span>(x,y)</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<pre><code>1 2
+</code></pre>
+<p>##29.5 함수의 호출 과정 알아보기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">multi</span>(<span class="params">a,b</span>): </span><br><span class="line">  <span class="string">&quot;&quot;&quot;a쌓고 b쌓고 c쌓는건 알겠는데</span></span><br><span class="line"><span class="string">c를 꺼내고 b를 꺼내고 a를 꺼내는게 왜이런지</span></span><br><span class="line"><span class="string">이해되지가 않는다.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">  c = a*b</span><br><span class="line">  <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a,b</span>):</span><br><span class="line">  c = a + b</span><br><span class="line">  <span class="built_in">print</span>(c)</span><br><span class="line">  d = mul(a,b)</span><br><span class="line">  <span class="built_in">print</span>(d)</span><br><span class="line"></span><br><span class="line">x = <span class="number">10</span></span><br><span class="line">y = <span class="number">20</span></span><br><span class="line">add(x,y)</span><br></pre></td></tr></table></figure>
+
+<p>#29.3 연습문제 : 몫과 나머지를 구하는 함수 만들</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">divide</span>(<span class="params">a,b</span>):</span><br><span class="line">   <span class="string">&quot;&quot;&quot; 슬래시 한번하면 값 그대로 나오고</span></span><br><span class="line"><span class="string"> 슬래시 두번하면 몫만 나오면</span></span><br><span class="line"><span class="string">% 나머지값이 나온다</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">  <span class="keyword">return</span> a/b, a//b, a%b</span><br><span class="line"></span><br><span class="line">divide(<span class="number">10</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>  File &quot;&lt;ipython-input-53-b3eb5ddc7290&gt;&quot;, line 6
+    return a/b, a//b, a%b
+                         ^
+IndentationError: unindent does not match any outer indentation level
+</code></pre>
+<h2 id="30-1-위치-인수와-리스트-언패킹-사용하기"><a href="#30-1-위치-인수와-리스트-언패킹-사용하기" class="headerlink" title="30.1 위치 인수와 리스트 언패킹 사용하기"></a>30.1 위치 인수와 리스트 언패킹 사용하기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>10 20 30
+</code></pre>
+<ul>
+<li>30.1.1 위치 인수를 사용하는 함수를 만들고 호출하기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">print_numbers</span>(<span class="params">a,b,c</span>):</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">print</span>(a)</span><br><span class="line">  <span class="built_in">print</span>(b)</span><br><span class="line">  <span class="built_in">print</span>(c)</span><br><span class="line"></span><br><span class="line">print_numbers(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>10
+20
+30
+</code></pre>
+<ul>
+<li>30.1.2 언패킹 사용하기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>]</span><br><span class="line">print_numbers(*x)</span><br><span class="line"></span><br><span class="line"><span class="comment">## *x를 하면 리스트의 포장을 푼다는 함수가 된다 (=unpacking)</span></span><br><span class="line"><span class="comment">## print(numbers(*x)) = print_numbers(10,20,30)라는 말이다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>10
+20
+30
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print_numbers(*[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>]) </span><br><span class="line"><span class="comment"># 이렇게도 된다.</span></span><br><span class="line"><span class="comment"># 단, 이때 함수의 매개변수 개수와 리스트의 요소 개수는 같아야 한다.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>10
+20
+30
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print_numbers(*[<span class="number">10</span>,<span class="number">20</span>]) </span><br><span class="line"><span class="comment"># 단, 이때 함수의 매개변수 개수와 리스트의 요소 개수는 같아야한다.</span></span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-67-c2b892dd2c14&gt; in &lt;module&gt;()
+----&gt; 1 print_numbers(*[10,20])
+
+
+TypeError: print_numbers() missing 1 required positional argument: &#39;c&#39;
+</code></pre>
+<ul>
+<li>30.1.3 가변 인수 함수 만들</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">print_numbers</span>(<span class="params">*args</span>): <span class="comment">#ars = arguments = 매개변수</span></span><br><span class="line">  <span class="keyword">for</span> arg <span class="keyword">in</span> args:</span><br><span class="line">    <span class="built_in">print</span>(arg)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">print_numbers(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">print_numbers(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1
+2
+10
+20
+30
+40
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">10</span>]</span><br><span class="line">print_numbers(*x)</span><br><span class="line"></span><br><span class="line">y = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>]</span><br><span class="line">print_numbers(*y)</span><br></pre></td></tr></table></figure>
+
+<pre><code>10
+10
+20
+30
+40
+</code></pre>
+<ul>
+<li>참고 : 고정 인수와 가변 인수를 함께 사용하기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">print_numbers</span>(<span class="params">a,*args</span>):</span><br><span class="line">  <span class="built_in">print</span>(a)</span><br><span class="line">  <span class="built_in">print</span>(args)</span><br><span class="line"></span><br><span class="line">print_numbers(<span class="number">1</span>)</span><br><span class="line">print_numbers(<span class="number">1</span>,<span class="number">10</span>,<span class="number">20</span>)</span><br><span class="line">print_numbers(*[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>1
+()
+1
+(10, 20)
+10
+(20, 30)
+</code></pre>
+<h2 id="30-2-키워드-인수-사용하기"><a href="#30-2-키워드-인수-사용하기" class="headerlink" title="30.2 키워드 인수 사용하기"></a>30.2 키워드 인수 사용하기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">personal_info</span>(<span class="params">name, age, address</span>):</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;이름: &#x27;</span>, name)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;나이:&#x27;</span>, age)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;주소:&#x27;</span>, address)</span><br><span class="line"></span><br><span class="line">personal_info(<span class="string">&#x27;홍길동&#x27;</span>, <span class="number">30</span>, <span class="string">&#x27;서울시 용산구 이촌동&#x27;</span>)</span><br><span class="line"><span class="comment">#인수의 순서과 용도를 모두기억해야 해서 불편하다. 다음과 같이 해보자</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>이름:  홍길동
+나이: 30
+주소: 서울시 용산구 이촌동
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">personal_info(name=<span class="string">&quot;홍길동&quot;</span>, age=<span class="number">30</span>, address=<span class="string">&#x27;서울시 용산구 이촌동&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>이름:  홍길동
+나이: 30
+주소: 서울시 용산구 이촌동
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">personal_info(name=<span class="string">&quot;홍길동&quot;</span>, address=<span class="string">&#x27;서울시 용산구 이촌동&#x27;</span>, age=<span class="number">30</span>)</span><br><span class="line"><span class="comment"># 순서가 달라도 그래도 출력되네. 굳.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>이름:  홍길동
+나이: 30
+주소: 서울시 용산구 이촌동
+</code></pre>
+<h1 id="30-3-키워드-인수와-딕셔너리-언패킹-사용하기"><a href="#30-3-키워드-인수와-딕셔너리-언패킹-사용하기" class="headerlink" title="30.3 키워드 인수와 딕셔너리 언패킹 사용하기"></a>30.3 키워드 인수와 딕셔너리 언패킹 사용하기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">personal_info</span>(<span class="params">name,age,address</span>):</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;이름:&#x27;</span>, name)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;나이:&#x27;</span>, age)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;주소:&#x27;</span>, address)</span><br><span class="line">  x = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;홍길동&#x27;</span>, <span class="string">&#x27;age&#x27;</span>:<span class="number">30</span>, <span class="string">&#x27;address&#x27;</span>:<span class="string">&#x27;서울시 용산구 이촌동&#x27;</span>&#125;</span><br><span class="line">  personal_info(**x)</span><br><span class="line">  <span class="comment"># 왜 출력안됨 ???? </span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># personal_info(**&#123;&#x27;name&#x27;: &#x27;홍길동&#x27;, &#x27;age&#x27;: 30, &#x27;address&#x27;: &#x27;서울시 용산구 이촌동&#x27;&#125;)</span></span><br><span class="line"><span class="comment"># 이거 하니까 행 겁나 많이 나옴....</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>30.3.1 **처럼 두번하는 이</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 딕셔너리는 **처럼 *를 두 번 사용할까요? </span></span><br><span class="line"><span class="comment"># 왜냐하면 딕셔너리는 키-값 쌍 형태로 값이 저장되어 있기 때문입니다.</span></span><br><span class="line">x = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;홍길동&#x27;</span>, <span class="string">&#x27;age&#x27;</span>:<span class="number">30</span>, <span class="string">&#x27;address&#x27;</span>:<span class="string">&#x27;서울시 용산구 이촌동&#x27;</span>&#125;</span><br><span class="line">personal_info(*x)</span><br><span class="line"><span class="comment">## 이것도 행 엄청 나다.</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#x = &#123;&#x27;name&#x27;: &#x27;홍길동&#x27;, &#x27;age&#x27;: 30, &#x27;address&#x27;: &#x27;서울시 용산구 이촌동&#x27;&#125;</span></span><br><span class="line"><span class="comment">#&gt;&gt;&gt; personal_info(*x)</span></span><br><span class="line"><span class="comment">#이름:  name</span></span><br><span class="line"><span class="comment">#나이:  age</span></span><br><span class="line"><span class="comment">#주소:  address</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#&gt;&gt;&gt; x = &#123;&#x27;name&#x27;: &#x27;홍길동&#x27;, &#x27;age&#x27;: 30, &#x27;address&#x27;: &#x27;서울시 용산구 이촌동&#x27;&#125;</span></span><br><span class="line"><span class="comment">#&gt;&gt;&gt; personal_info(**x)</span></span><br><span class="line"><span class="comment">#이름:  홍길동</span></span><br><span class="line"><span class="comment">#나이:  30</span></span><br><span class="line"><span class="comment">#주소:  서울시 용산구 이촌동</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>30.3.2 키워드 인수를 사용하는 가변 인수 함수 만들기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">personal_info</span>(<span class="params">**kwargs</span>): <span class="comment">#keyword arguments</span></span><br><span class="line">  <span class="keyword">for</span> kw, arg <span class="keyword">in</span> kwargs.item():</span><br><span class="line">    <span class="built_in">print</span>(kw,<span class="string">&#x27;:&#x27;</span>,arg, sep=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">peronsal_info(name=<span class="string">&#x27;홍길동&#x27;</span>)</span><br><span class="line">personal_info(name=<span class="string">&#x27;홍길동&#x27;</span>, age=<span class="number">30</span>, address=<span class="string">&#x27;서울시 용산구 이촌동&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+&lt;ipython-input-106-2abc425a519f&gt; in &lt;module&gt;()
+      4 
+      5 
+----&gt; 6 peronsal_info(name=&#39;홍길동&#39;)
+      7 personal_info(name=&#39;홍길동&#39;, age=30, address=&#39;서울시 용산구 이촌동&#39;)
+
+
+NameError: name &#39;peronsal_info&#39; is not defined
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = &#123;<span class="string">&#x27;name&#x27;</span>: 홍길동&#125;</span><br><span class="line">personal_info(**x)</span><br><span class="line">name: 홍길동</span><br><span class="line">y = &#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;홍길동&#x27;</span>, <span class="string">&#x27;age&#x27;</span>=<span class="number">30</span>, <span class="string">&#x27;address&#x27;</span>: <span class="string">&#x27;서울시 용산구 이촌동&#x27;</span>&#125;</span><br><span class="line">personal_info(**y)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>  File &quot;&lt;ipython-input-109-69cbf1af3b78&gt;&quot;, line 4
+    y = &#123;&#39;name&#39;: &#39;홍길동&#39;, &#39;age&#39;=30, &#39;address&#39;: &#39;서울시 용산구 이촌동&#39;&#125;
+                             ^
+SyntaxError: invalid syntax
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">personal_info</span>(<span class="params">**kwargs</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;name&#x27;</span> <span class="keyword">in</span> kwargs:    <span class="comment"># in 으로 딕셔너리 안에 특정 키가 있는지 확인</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;이름: &#x27;</span>, kwargs[<span class="string">&#x27;name&#x27;</span>])</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;age&#x27;</span> <span class="keyword">in</span> kwargs:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;나이: &#x27;</span>, kwargs[<span class="string">&#x27;age&#x27;</span>])</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&#x27;address&#x27;</span> <span class="keyword">in</span> kwargs:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;주소: &#x27;</span>, kwargs[<span class="string">&#x27;address&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>참고 : 고정 인수와 가변 인수(키워드 인수)를 함께 사용하기</li>
+</ul>
+<ul>
+<li>고정 인수와 가변 인수를 사용할 때는 다음과 같이 고정 매개 변수를 먼저 지정하고, 그 다음 매개변수에 **를 붙여주면 됩니다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">personal_info</span>(<span class="params">name, **kwargs</span>):</span><br><span class="line">  <span class="built_in">print</span>(name)</span><br><span class="line">  <span class="built_in">print</span>(kwargs)</span><br><span class="line"></span><br><span class="line">persnal_info(<span class="string">&#x27;홍길동&#x27;</span>)</span><br><span class="line">personal_info(<span class="string">&#x27;홍길동&#x27;</span>, age=<span class="number">30</span>, address=<span class="string">&#x27;서울시 용산구 이촌동&#x27;</span>)</span><br><span class="line">personal_info(**&#123;<span class="string">&#x27;name&#x27;</span>: <span class="string">&#x27;홍길동&#x27;</span>, <span class="string">&#x27;age&#x27;</span>: <span class="number">30</span>, <span class="string">&#x27;address&#x27;</span>: <span class="string">&#x27;서울시 용산구 이촌동&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+&lt;ipython-input-112-8aa719c056a6&gt; in &lt;module&gt;()
+      3   print(kwargs)
+      4 
+----&gt; 5 persnal_info(&#39;홍길동&#39;)
+      6 personal_info(&#39;홍길동&#39;, age=30, address=&#39;서울시 용산구 이촌동&#39;)
+      7 personal_info(**&#123;&#39;name&#39;: &#39;홍길동&#39;, &#39;age&#39;: 30, &#39;address&#39;: &#39;서울시 용산구 이촌동&#39;&#125;)
+
+
+NameError: name &#39;persnal_info&#39; is not defined
+</code></pre>
+<ul>
+<li>참고 : 위치 인수와 키워드 인수를 함께 사용하기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">custom_print</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">  <span class="built_in">print</span>(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">custom_print(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,sep=<span class="string">&#x27;:&#x27;</span>, end=<span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1:2:3
+</code></pre>
+<p>#30.4 매개변수에 초깃값 지정하기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">personal_info</span>(<span class="params">name, age, affreess=<span class="string">&#x27;비공개&#x27;</span></span>):</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;이름:&#x27;</span>,name)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;나이:&#x27;</span>,age)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&#x27;주소:&#x27;</span>,address)</span><br><span class="line"></span><br><span class="line">personal_info(<span class="string">&#x27;홍길동&#x27;</span>, <span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>이름: 홍길동
+나이: 30
+
+
+
+---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+&lt;ipython-input-117-3309fa8c57ec&gt; in &lt;module&gt;()
+      4   print(&#39;주소:&#39;,address)
+      5 
+----&gt; 6 personal_info(&#39;홍길동&#39;, 30)
+
+
+&lt;ipython-input-117-3309fa8c57ec&gt; in personal_info(name, age, affreess)
+      2   print(&#39;이름:&#39;,name)
+      3   print(&#39;나이:&#39;,age)
+----&gt; 4   print(&#39;주소:&#39;,address)
+      5 
+      6 personal_info(&#39;홍길동&#39;, 30)
+
+
+NameError: name &#39;address&#39; is not defined
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://lysyeah.github.io/2022/06/28/day0628_assignment/" data-id="cl4zbb2be0002pgv7es646m15" data-title="Hello,world 출력 함수 만들기" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/06/29/day0629/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          pandas 기본 자료형
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/06/28/day0628/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">반복문 복습</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/06/29/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/29/day0629/">pandas 기본 자료형</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/28/day0628_assignment/">Hello,world 출력 함수 만들기</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/28/day0628/">반복문 복습</a>
+          </li>
+        
+          <li>
+            <a href="/2022/06/27/day0627/">Python 기초문법</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
