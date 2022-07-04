@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>day0701_ml_ch3 - Hexo</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Hexo"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="3-2 선형회귀p.130  12345678910111213141516171819import numpy as npperch_length &amp;#x3D; np.array([8.4, 13.7, 15.0, 16.2, 17.4, 18.0, 18.7, 19.0, 19.6, 20.0, 21.0,       21.0, 21.0, 21.3, 22.0, 22.0, 22.0, 22.0,"><meta property="og:type" content="blog"><meta property="og:title" content="day0701_ml_ch3"><meta property="og:url" content="https://lysyeah.github.io/2022/07/01/day0701_ml_ch3/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="3-2 선형회귀p.130  12345678910111213141516171819import numpy as npperch_length &amp;#x3D; np.array([8.4, 13.7, 15.0, 16.2, 17.4, 18.0, 18.7, 19.0, 19.6, 20.0, 21.0,       21.0, 21.0, 21.3, 22.0, 22.0, 22.0, 22.0,"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://lysyeah.github.io/output_13_0.png"><meta property="og:image" content="https://lysyeah.github.io/output_17_0.png"><meta property="og:image" content="https://lysyeah.github.io/output_26_0.png"><meta property="og:image" content="https://lysyeah.github.io/output_31_0.png"><meta property="og:image" content="https://lysyeah.github.io/output_59_0.png"><meta property="og:image" content="https://lysyeah.github.io/output_65_0.png"><meta property="article:published_time" content="2022-07-01T01:10:00.000Z"><meta property="article:modified_time" content="2022-07-01T08:04:32.237Z"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/output_13_0.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://lysyeah.github.io/2022/07/01/day0701_ml_ch3/"},"headline":"day0701_ml_ch3","image":["https://lysyeah.github.io/output_13_0.png","https://lysyeah.github.io/output_17_0.png","https://lysyeah.github.io/output_26_0.png","https://lysyeah.github.io/output_31_0.png","https://lysyeah.github.io/output_59_0.png","https://lysyeah.github.io/output_65_0.png"],"datePublished":"2022-07-01T01:10:00.000Z","dateModified":"2022-07-01T08:04:32.237Z","author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://lysyeah.github.io/img/logo.svg"}},"description":"3-2 선형회귀p.130  12345678910111213141516171819import numpy as npperch_length &#x3D; np.array([8.4, 13.7, 15.0, 16.2, 17.4, 18.0, 18.7, 19.0, 19.6, 20.0, 21.0,       21.0, 21.0, 21.3, 22.0, 22.0, 22.0, 22.0,"}</script><link rel="canonical" href="https://lysyeah.github.io/2022/07/01/day0701_ml_ch3/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 6.2.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-07-01T01:10:00.000Z" title="2022. 7. 1. 오전 10:10:00">2022-07-01</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-07-01T08:04:32.237Z" title="2022. 7. 1. 오후 5:04:32">2022-07-01</time></span><span class="level-item">10 minutes read (About 1540 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">day0701_ml_ch3</h1><div class="content"><h2 id="3-2-선형회귀"><a href="#3-2-선형회귀" class="headerlink" title="3-2 선형회귀"></a>3-2 선형회귀</h2><p>p.130 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">perch_length = np.array([<span class="number">8.4</span>, <span class="number">13.7</span>, <span class="number">15.0</span>, <span class="number">16.2</span>, <span class="number">17.4</span>, <span class="number">18.0</span>, <span class="number">18.7</span>, <span class="number">19.0</span>, <span class="number">19.6</span>, <span class="number">20.0</span>, <span class="number">21.0</span>,</span><br><span class="line">       <span class="number">21.0</span>, <span class="number">21.0</span>, <span class="number">21.3</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.5</span>, <span class="number">22.5</span>, <span class="number">22.7</span>,</span><br><span class="line">       <span class="number">23.0</span>, <span class="number">23.5</span>, <span class="number">24.0</span>, <span class="number">24.0</span>, <span class="number">24.6</span>, <span class="number">25.0</span>, <span class="number">25.6</span>, <span class="number">26.5</span>, <span class="number">27.3</span>, <span class="number">27.5</span>, <span class="number">27.5</span>,</span><br><span class="line">       <span class="number">27.5</span>, <span class="number">28.0</span>, <span class="number">28.7</span>, <span class="number">30.0</span>, <span class="number">32.8</span>, <span class="number">34.5</span>, <span class="number">35.0</span>, <span class="number">36.5</span>, <span class="number">36.0</span>, <span class="number">37.0</span>, <span class="number">37.0</span>,</span><br><span class="line">       <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, <span class="number">42.0</span>, <span class="number">43.0</span>, <span class="number">43.0</span>, <span class="number">43.5</span>,</span><br><span class="line">       <span class="number">44.0</span>])</span><br><span class="line"></span><br><span class="line">perch_weight = np.array([<span class="number">5.9</span>, <span class="number">32.0</span>, <span class="number">40.0</span>, <span class="number">51.5</span>, <span class="number">70.0</span>, <span class="number">100.0</span>, <span class="number">78.0</span>, <span class="number">80.0</span>, <span class="number">85.0</span>, <span class="number">85.0</span>, <span class="number">110.0</span>,</span><br><span class="line">       <span class="number">115.0</span>, <span class="number">125.0</span>, <span class="number">130.0</span>, <span class="number">120.0</span>, <span class="number">120.0</span>, <span class="number">130.0</span>, <span class="number">135.0</span>, <span class="number">110.0</span>, <span class="number">130.0</span>,</span><br><span class="line">       <span class="number">150.0</span>, <span class="number">145.0</span>, <span class="number">150.0</span>, <span class="number">170.0</span>, <span class="number">225.0</span>, <span class="number">145.0</span>, <span class="number">188.0</span>, <span class="number">180.0</span>, <span class="number">197.0</span>,</span><br><span class="line">       <span class="number">218.0</span>, <span class="number">300.0</span>, <span class="number">260.0</span>, <span class="number">265.0</span>, <span class="number">250.0</span>, <span class="number">250.0</span>, <span class="number">300.0</span>, <span class="number">320.0</span>, <span class="number">514.0</span>,</span><br><span class="line">       <span class="number">556.0</span>, <span class="number">840.0</span>, <span class="number">685.0</span>, <span class="number">700.0</span>, <span class="number">700.0</span>, <span class="number">690.0</span>, <span class="number">900.0</span>, <span class="number">650.0</span>, <span class="number">820.0</span>,</span><br><span class="line">       <span class="number">850.0</span>, <span class="number">900.0</span>, <span class="number">1015.0</span>, <span class="number">820.0</span>, <span class="number">1100.0</span>, <span class="number">1000.0</span>, <span class="number">1100.0</span>, <span class="number">1000.0</span>,</span><br><span class="line">       <span class="number">1000.0</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(perch_length.shape, perch_weight.shape) <span class="comment"># 확인해본다고 프린트해봄</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>(56,) (56,)
+</code></pre>
+<h2 id="데이터-가공"><a href="#데이터-가공" class="headerlink" title="데이터 가공"></a>데이터 가공</h2><p>- </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 훈련세트와 테스트 세트로 나눈 후, 1차원 --&gt; 2차원 배열로 전환</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련 세트와 테스트 세트로 나눕니다</span></span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    perch_length, perch_weight, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 1차원 --&gt; 2차원 배열</span></span><br><span class="line">train_input = train_input.reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">test_input = test_input.reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="시각화-gt-재가공"><a href="#시각화-gt-재가공" class="headerlink" title="시각화 -&gt; 재가공"></a>시각화 -&gt; 재가공</h2><ul>
+<li>모델</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsRegressor</span><br><span class="line"></span><br><span class="line">knr = KNeighborsRegressor(n_neighbors=<span class="number">3</span>)</span><br><span class="line"><span class="comment"># k-최근접 이웃 회귀 모델을 훈련합니다</span></span><br><span class="line">knr.fit(train_input, train_target)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>KNeighborsRegressor(n_neighbors=3)
+</code></pre>
+<h2 id="모델-평가"><a href="#모델-평가" class="headerlink" title="모델 평가"></a>모델 평가</h2><h3 id="모델-예측"><a href="#모델-예측" class="headerlink" title="모델 예측"></a>모델 예측</h3><ul>
+<li>서비스를 함</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 농어 길이 = 50</span></span><br><span class="line"><span class="built_in">print</span>(knr.predict([[<span class="number">50</span>]]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1033.33333333]
+</code></pre>
+<h2 id="모형-평가를-위한-시각화"><a href="#모형-평가를-위한-시각화" class="headerlink" title="모형 평가를 위한 시각화"></a>모형 평가를 위한 시각화</h2><blockquote>
+<p>들여쓴 블록</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">distances, indexs = knr.kneighbors([[<span class="number">50</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련 세트의 산점도를 그려보자.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련세트의 산점도를 그린다.</span></span><br><span class="line">plt.scatter(train_input, train_target)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련 세트 중에서 이웃 샘플만 다시 그린다.</span></span><br><span class="line">plt.scatter(train_input[indexes], train_target[indexes], marker=<span class="string">&#x27;D&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#50cm 농어 데이터</span></span><br><span class="line">plt.scatter(<span class="number">50</span>,<span class="number">1033</span>,marker=<span class="string">&#x27;^&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_13_0.png" alt="png"></p>
+<ul>
+<li>책 저자가 하고싶은 말 &#x3D;</li>
+<li>머신러닝 &#x3D; 알고리즘 </li>
+<li>머신러닝 &#x2F; 딥러닝 &#x3D; 실험</li>
+<li>실험을 한다 - 다양한 방법을 써본다</li>
+<li>–&gt;&gt; 어떻게 몇개의 알고리즘이 선택받았을까???</li>
+<li>다양한 알고리즘을 써본다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(np.mean(train_target[indexes]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>1033.3333333333333
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(knr.predict([[<span class="number">100</span>]]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1033.33333333]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 100cm 농어의 이웃을 구합니다</span></span><br><span class="line">distances, indexes = knr.kneighbors([[<span class="number">100</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련 세트의 산점도를 그립니다</span></span><br><span class="line">plt.scatter(train_input, train_target)</span><br><span class="line"><span class="comment"># 훈련 세트 중에서 이웃 샘플만 다시 그립니다</span></span><br><span class="line">plt.scatter(train_input[indexes], train_target[indexes], marker=<span class="string">&#x27;D&#x27;</span>)</span><br><span class="line"><span class="comment"># 100cm 농어 데이터</span></span><br><span class="line">plt.scatter(<span class="number">100</span>, <span class="number">1033</span>, marker=<span class="string">&#x27;^&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment">## 시각화 하라고 했던 대로 해보자.</span></span><br><span class="line"><span class="comment">## ax.xlabel_이렇게 하는거.</span></span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_17_0.png" alt="png"></p>
+<h2 id="선형회"><a href="#선형회" class="headerlink" title="선형회"></a>선형회</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## Python</span></span><br><span class="line">lr = LinearRegression()</span><br><span class="line"><span class="comment"># 선형 회귀에 대해 학습</span></span><br><span class="line">lr.fit(train_input,train_target)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>LinearRegression()
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 50cm 농어에 대한 예측</span></span><br><span class="line"><span class="built_in">print</span>(lr.predict([[<span class="number">100</span>]]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[3192.69585141]
+</code></pre>
+<h2 id="선형-회귀의-모형"><a href="#선형-회귀의-모형" class="headerlink" title="선형 회귀의 모형"></a>선형 회귀의 모형</h2><ul>
+<li>기울기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.coef_, lr.intercept_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[39.01714496] -709.0186449535477
+</code></pre>
+<h2 id="선형회귀"><a href="#선형회귀" class="headerlink" title="선형회귀"></a>선형회귀</h2><ul>
+<li>다항 회귀</li>
+<li>농어 1cm &#x3D; - 650g # 뭐야..</li>
+<li>직선의 기술기 대신, 곡선의 기울기를 쓰자.</li>
+<li>직선:1차 , 곡선:2차</li>
+<li>$무게 &#x3D; a길이^2 + b길이 + 절편$</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 훈련 세트의 산점도를 그립니다</span></span><br><span class="line">plt.scatter(train_input, train_target)</span><br><span class="line"><span class="comment"># 15에서 50까지 1차 방정식 그래프를 그립니다</span></span><br><span class="line">plt.plot([<span class="number">15</span>, <span class="number">50</span>], [<span class="number">15</span>*lr.coef_+lr.intercept_, <span class="number">50</span>*lr.coef_+lr.intercept_])</span><br><span class="line"><span class="comment"># 50cm 농어 데이터</span></span><br><span class="line">plt.scatter(<span class="number">50</span>, <span class="number">1241.8</span>, marker=<span class="string">&#x27;^&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_26_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">train_poly = np.column_stack((train_input ** <span class="number">2</span>, train_input))</span><br><span class="line">test_poly = np.column_stack((test_input ** <span class="number">2</span>, test_input))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(train_poly.shape, test_poly.shape)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;----train_polt----&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(train_poly[<span class="number">0</span>:<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;----test_polt----&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(test_poly[<span class="number">0</span>:<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>(42, 2) (14, 2)
+----train_polt----
+[[384.16  19.6 ]
+ [484.    22.  ]
+ [349.69  18.7 ]]
+----test_polt----
+[[ 70.56   8.4 ]
+ [324.    18.  ]
+ [756.25  27.5 ]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lr = LinearRegression()</span><br><span class="line">lr.fit(train_poly, train_target)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(lr.predict([[<span class="number">50</span>**<span class="number">2</span>, <span class="number">50</span>]]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1573.98423528]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.coef_, lr.intercept_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[  1.01433211 -21.55792498] 116.0502107827827
+</code></pre>
+<ul>
+<li>무게 &#x3D; 1.01 x $길이^2$ - 21.6 x 길이 +116.5</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 구간별 직선을 그리기 위해 15에서 49까지 정수 배열을 만듭니다</span></span><br><span class="line">point = np.arange(<span class="number">15</span>, <span class="number">50</span>)</span><br><span class="line"><span class="comment"># 훈련 세트의 산점도를 그립니다</span></span><br><span class="line">plt.scatter(train_input, train_target)</span><br><span class="line"><span class="comment"># 15에서 49까지 2차 방정식 그래프를 그립니다</span></span><br><span class="line">plt.plot(point, <span class="number">1.01</span>*point**<span class="number">2</span> - <span class="number">21.6</span>*point + <span class="number">116.05</span>)</span><br><span class="line"><span class="comment"># 50cm 농어 데이터</span></span><br><span class="line">plt.scatter([<span class="number">50</span>], [<span class="number">1574</span>], marker=<span class="string">&#x27;^&#x27;</span>)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_31_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.score(train_poly, train_target))</span><br><span class="line"><span class="built_in">print</span>(lr.score(test_poly, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9706807451768623
+0.9775935108325122
+</code></pre>
+<h2 id="3-3-특성-공학과-규제-p-150"><a href="#3-3-특성-공학과-규제-p-150" class="headerlink" title="3-3 특성 공학과 규제 p.150."></a>3-3 특성 공학과 규제 p.150.</h2><ul>
+<li>혼자 해보는 챕터.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd <span class="comment">#pd는 관례적으로 사용하는 판다스의 별칭이다.</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&#x27;https://bit.ly/perch_csv_data&#x27;</span>)</span><br><span class="line">perch_full = df.to_numpy()</span><br><span class="line"><span class="built_in">print</span>(perch_full)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[ 8.4   2.11  1.41]
+ [13.7   3.53  2.  ]
+ [15.    3.82  2.43]
+ [16.2   4.59  2.63]
+ [17.4   4.59  2.94]
+ [18.    5.22  3.32]
+ [18.7   5.2   3.12]
+ [19.    5.64  3.05]
+ [19.6   5.14  3.04]
+ [20.    5.08  2.77]
+ [21.    5.69  3.56]
+ [21.    5.92  3.31]
+ [21.    5.69  3.67]
+ [21.3   6.38  3.53]
+ [22.    6.11  3.41]
+ [22.    5.64  3.52]
+ [22.    6.11  3.52]
+ [22.    5.88  3.52]
+ [22.    5.52  4.  ]
+ [22.5   5.86  3.62]
+ [22.5   6.79  3.62]
+ [22.7   5.95  3.63]
+ [23.    5.22  3.63]
+ [23.5   6.28  3.72]
+ [24.    7.29  3.72]
+ [24.    6.38  3.82]
+ [24.6   6.73  4.17]
+ [25.    6.44  3.68]
+ [25.6   6.56  4.24]
+ [26.5   7.17  4.14]
+ [27.3   8.32  5.14]
+ [27.5   7.17  4.34]
+ [27.5   7.05  4.34]
+ [27.5   7.28  4.57]
+ [28.    7.82  4.2 ]
+ [28.7   7.59  4.64]
+ [30.    7.62  4.77]
+ [32.8  10.03  6.02]
+ [34.5  10.26  6.39]
+ [35.   11.49  7.8 ]
+ [36.5  10.88  6.86]
+ [36.   10.61  6.74]
+ [37.   10.84  6.26]
+ [37.   10.57  6.37]
+ [39.   11.14  7.49]
+ [39.   11.14  6.  ]
+ [39.   12.43  7.35]
+ [40.   11.93  7.11]
+ [40.   11.73  7.22]
+ [40.   12.38  7.46]
+ [40.   11.14  6.63]
+ [42.   12.8   6.87]
+ [43.   11.93  7.28]
+ [43.   12.51  7.42]
+ [43.5  12.6   8.14]
+ [44.   12.49  7.6 ]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">perch_weight = np.array(</span><br><span class="line">    [<span class="number">5.9</span>, <span class="number">32.0</span>, <span class="number">40.0</span>, <span class="number">51.5</span>, <span class="number">70.0</span>, <span class="number">100.0</span>, <span class="number">78.0</span>, <span class="number">80.0</span>, <span class="number">85.0</span>, <span class="number">85.0</span>, </span><br><span class="line">     <span class="number">110.0</span>, <span class="number">115.0</span>, <span class="number">125.0</span>, <span class="number">130.0</span>, <span class="number">120.0</span>, <span class="number">120.0</span>, <span class="number">130.0</span>, <span class="number">135.0</span>, <span class="number">110.0</span>, </span><br><span class="line">     <span class="number">130.0</span>, <span class="number">150.0</span>, <span class="number">145.0</span>, <span class="number">150.0</span>, <span class="number">170.0</span>, <span class="number">225.0</span>, <span class="number">145.0</span>, <span class="number">188.0</span>, <span class="number">180.0</span>, </span><br><span class="line">     <span class="number">197.0</span>, <span class="number">218.0</span>, <span class="number">300.0</span>, <span class="number">260.0</span>, <span class="number">265.0</span>, <span class="number">250.0</span>, <span class="number">250.0</span>, <span class="number">300.0</span>, <span class="number">320.0</span>, </span><br><span class="line">     <span class="number">514.0</span>, <span class="number">556.0</span>, <span class="number">840.0</span>, <span class="number">685.0</span>, <span class="number">700.0</span>, <span class="number">700.0</span>, <span class="number">690.0</span>, <span class="number">900.0</span>, <span class="number">650.0</span>, </span><br><span class="line">     <span class="number">820.0</span>, <span class="number">850.0</span>, <span class="number">900.0</span>, <span class="number">1015.0</span>, <span class="number">820.0</span>, <span class="number">1100.0</span>, <span class="number">1000.0</span>, <span class="number">1100.0</span>, </span><br><span class="line">     <span class="number">1000.0</span>, <span class="number">1000.0</span>]</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(perch_full, perch_weight, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">poly = PolynomialFeatures()</span><br><span class="line">poly.fit([[<span class="number">2</span>, <span class="number">3</span>]])</span><br><span class="line"><span class="built_in">print</span>(poly.transform([[<span class="number">2</span>, <span class="number">3</span>]]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[1. 2. 3. 4. 6. 9.]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">poly = PolynomialFeatures(include_bias=<span class="literal">False</span>)</span><br><span class="line">poly.fit([[<span class="number">2</span>, <span class="number">3</span>]])</span><br><span class="line"><span class="built_in">print</span>(poly.transform([[<span class="number">2</span>, <span class="number">3</span>]]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[2. 3. 4. 6. 9.]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">poly = PolynomialFeatures(include_bias=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">poly.fit(train_input)</span><br><span class="line">train_poly = poly.transform(train_input)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(train_poly.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(42, 9)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poly.get_feature_names_out()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([&#39;x0&#39;, &#39;x1&#39;, &#39;x2&#39;, &#39;x0^2&#39;, &#39;x0 x1&#39;, &#39;x0 x2&#39;, &#39;x1^2&#39;, &#39;x1 x2&#39;,
+       &#39;x2^2&#39;], dtype=object)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_poly = poly.transform(test_input)</span><br></pre></td></tr></table></figure>
+
+<h2 id="다중-회귀-모델-훈련하기"><a href="#다중-회귀-모델-훈련하기" class="headerlink" title="다중 회귀 모델 훈련하기."></a>다중 회귀 모델 훈련하기.</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line">lr = LinearRegression()</span><br><span class="line">lr.fit(train_poly, train_target)</span><br><span class="line"><span class="built_in">print</span>(lr.score(train_poly, train_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9903183436982124
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.score(test_poly, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9714559911594134
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">poly = PolynomialFeatures(degree=<span class="number">5</span>, include_bias=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">poly.fit(train_input)</span><br><span class="line">train_poly = poly.transform(train_input)</span><br><span class="line">test_poly = poly.transform(test_input)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(train_poly.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(42, 55)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lr.fit(train_poly, train_target)</span><br><span class="line"><span class="built_in">print</span>(lr.score(train_poly, train_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9999999999991097
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.score(test_poly, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>-144.40579242684848
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 규제</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"></span><br><span class="line">ss = StandardScaler()</span><br><span class="line">ss.fit(train_poly)</span><br><span class="line"></span><br><span class="line">train_scaled = ss.transform(train_poly)</span><br><span class="line">test_scaled = ss.transform(test_poly)</span><br></pre></td></tr></table></figure>
+
+<h2 id="릿지"><a href="#릿지" class="headerlink" title="릿지"></a>릿지</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> Ridge</span><br><span class="line"></span><br><span class="line">ridge = Ridge()</span><br><span class="line">ridge.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(ridge.score(train_scaled, train_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9896101671037343
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(ridge.score(test_scaled, test_target))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9790693977615397
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">train_score = []</span><br><span class="line">test_score = []</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alpha_list = [<span class="number">0.001</span>, <span class="number">0.01</span>, <span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>]</span><br><span class="line"><span class="keyword">for</span> alpha <span class="keyword">in</span> alpha_list:</span><br><span class="line">    <span class="comment"># 릿지 모델을 만듭니다</span></span><br><span class="line">    ridge = Ridge(alpha=alpha)</span><br><span class="line">    <span class="comment"># 릿지 모델을 훈련합니다</span></span><br><span class="line">    ridge.fit(train_scaled, train_target)</span><br><span class="line">    <span class="comment"># 훈련 점수와 테스트 점수를 저장합니다</span></span><br><span class="line">    train_score.append(ridge.score(train_scaled, train_target))</span><br><span class="line">    test_score.append(ridge.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(np.log10(alpha_list), train_score)</span><br><span class="line">plt.plot(np.log10(alpha_list), test_score)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;alpha&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;R^2&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_59_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ridge = Ridge(alpha=<span class="number">0.1</span>)</span><br><span class="line">ridge.fit(train_scaled, train_target)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(ridge.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(ridge.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9903815817570366
+0.9827976465386926
+</code></pre>
+<h2 id="라쏘"><a href="#라쏘" class="headerlink" title="라쏘"></a>라쏘</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> Lasso</span><br><span class="line"></span><br><span class="line">lasso = Lasso()</span><br><span class="line">lasso.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(lasso.score(train_scaled, train_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.989789897208096
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lasso.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9800593698421883
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">train_score = []</span><br><span class="line">test_score = []</span><br><span class="line"></span><br><span class="line">alpha_list = [<span class="number">0.001</span>, <span class="number">0.01</span>, <span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>]</span><br><span class="line"><span class="keyword">for</span> alpha <span class="keyword">in</span> alpha_list:</span><br><span class="line">    <span class="comment"># 라쏘 모델을 만듭니다</span></span><br><span class="line">    lasso = Lasso(alpha=alpha, max_iter=<span class="number">10000</span>)</span><br><span class="line">    <span class="comment"># 라쏘 모델을 훈련합니다</span></span><br><span class="line">    lasso.fit(train_scaled, train_target)</span><br><span class="line">    <span class="comment"># 훈련 점수와 테스트 점수를 저장합니다</span></span><br><span class="line">    train_score.append(lasso.score(train_scaled, train_target))</span><br><span class="line">    test_score.append(lasso.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>/usr/local/lib/python3.7/dist-packages/sklearn/linear_model/_coordinate_descent.py:648: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.878e+04, tolerance: 5.183e+02
+  coef_, l1_reg, l2_reg, X, y, max_iter, tol, rng, random, positive
+/usr/local/lib/python3.7/dist-packages/sklearn/linear_model/_coordinate_descent.py:648: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.297e+04, tolerance: 5.183e+02
+  coef_, l1_reg, l2_reg, X, y, max_iter, tol, rng, random, positive
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(np.log10(alpha_list), train_score)</span><br><span class="line">plt.plot(np.log10(alpha_list), test_score)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;alpha&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;R^2&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_65_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lasso = Lasso(alpha=<span class="number">10</span>)</span><br><span class="line">lasso.fit(train_scaled, train_target)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(lasso.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(lasso.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9888067471131867
+0.9824470598706695
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(np.<span class="built_in">sum</span>(lasso.coef_ == <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>40
+</code></pre>
+</div><div class="article-licensing box"><div class="licensing-title"><p>day0701_ml_ch3</p><p><a href="https://lysyeah.github.io/2022/07/01/day0701_ml_ch3/">https://lysyeah.github.io/2022/07/01/day0701_ml_ch3/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>John Doe</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-07-01</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-07-01</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="/" target="_blank" rel="noopener" data-type="afdian"><span class="icon is-small"><i class="fas fa-charging-station"></i></span><span>Afdian.net</span></a><a class="button donate" data-type="alipay"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="/" alt="Alipay"></span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a><a class="button donate" href="/" target="_blank" rel="noopener" data-type="patreon"><span class="icon is-small"><i class="fab fa-patreon"></i></span><span>Patreon</span></a><div class="notification is-danger">You forgot to set the <code>business</code> or <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.</div><a class="button donate" data-type="wechat"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="/" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/07/01/day0701_ml_assignment_10MinsToPandas/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">0701_ml_assignment</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/07/01/day0701_ml_ch4/"><span class="level-item">day0701_ml_ch4</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">15</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-07-04T08:40:00.000Z">2022-07-04</time></p><p class="title"><a href="/2022/07/04/day0704/">day0704_ml</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-07-01T08:30:00.000Z">2022-07-01</time></p><p class="title"><a href="/2022/07/01/day0701_ml_assignment_10MinsToPandas/">0701_ml_assignment</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-07-01T01:10:00.000Z">2022-07-01</time></p><p class="title"><a href="/2022/07/01/day0701_ml_ch3/">day0701_ml_ch3</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-07-01T01:10:00.000Z">2022-07-01</time></p><p class="title"><a href="/2022/07/01/day0701_ml_ch4/">day0701_ml_ch4</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-06-30T10:42:00.000Z">2022-06-30</time></p><p class="title"><a href="/2022/06/30/practise_3/">practise_3</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/07/"><span class="level-start"><span class="level-item">July 2022</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/06/"><span class="level-start"><span class="level-item">June 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
