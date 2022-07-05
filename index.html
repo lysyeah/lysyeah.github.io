@@ -1,5 +1,2150 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Hexo</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Hexo"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Hexo"><meta property="og:url" content="https://lysyeah.github.io/"><meta property="og:site_name" content="Hexo"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://lysyeah.github.io/img/og_image.png"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://lysyeah.github.io"},"headline":"Hexo","image":["https://lysyeah.github.io/img/og_image.png"],"author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://lysyeah.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 6.2.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-07-04T08:40:00.000Z" title="2022. 7. 4. 오후 5:40:00">2022-07-04</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-07-04T08:33:47.508Z" title="2022. 7. 4. 오후 5:33:47">2022-07-04</time></span><span class="level-item">14 minutes read (About 2027 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/07/04/day0704/">day0704_ml</a></h1><div class="content"><h2 id="확률적-경사-하강법"><a href="#확률적-경사-하강법" class="headerlink" title="확률적 경사 하강법"></a>확률적 경사 하강법</h2><ul>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Hexo</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Hexo"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="Hexo"><meta property="og:url" content="https://lysyeah.github.io/"><meta property="og:site_name" content="Hexo"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://lysyeah.github.io/img/og_image.png"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://lysyeah.github.io"},"headline":"Hexo","image":["https://lysyeah.github.io/img/og_image.png"],"author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://lysyeah.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 6.2.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-07-05T07:01:00.000Z" title="2022. 7. 5. 오후 4:01:00">2022-07-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-07-05T06:58:59.032Z" title="2022. 7. 5. 오후 3:58:59">2022-07-05</time></span><span class="level-item">15 minutes read (About 2237 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/07/05/0705_PycaretSample/">day0705_pycaretsample</a></h1><div class="content"><p>!pip uninstall sklearn -y<br>!pip install –upgrade sklearn<br>!pip install scikit-learn&#x3D;&#x3D;0.23.2 –user<br>!pip install pycaret<br>!pip install markupsafe&#x3D;&#x3D;2.0.1</p>
+<ul>
+<li>Pycaret 을 구글 코랩에서 활성화하기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pycaret.utils <span class="keyword">import</span> enable_colab</span><br><span class="line">enable_colab()</span><br></pre></td></tr></table></figure>
+
+<pre><code>Colab mode enabled.
+</code></pre>
+<p>데이터 불러오기</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pycaret.datasets <span class="keyword">import</span> get_data</span><br><span class="line">dataset = get_data(<span class="string">&#x27;credit&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<script src="/static/components/requirejs/require.js"></script>
+<script>
+  requirejs.config({
+    paths: {
+      base: '/static/base',
+      plotly: 'https://cdn.plot.ly/plotly-latest.min.js?noext',
+    },
+  });
+</script>
+
+
+
+
+
+  <div id="df-b1e931e3-7220-444c-b503-4142de4c821c">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>LIMIT_BAL</th>
+      <th>SEX</th>
+      <th>EDUCATION</th>
+      <th>MARRIAGE</th>
+      <th>AGE</th>
+      <th>PAY_1</th>
+      <th>PAY_2</th>
+      <th>PAY_3</th>
+      <th>PAY_4</th>
+      <th>PAY_5</th>
+      <th>...</th>
+      <th>BILL_AMT4</th>
+      <th>BILL_AMT5</th>
+      <th>BILL_AMT6</th>
+      <th>PAY_AMT1</th>
+      <th>PAY_AMT2</th>
+      <th>PAY_AMT3</th>
+      <th>PAY_AMT4</th>
+      <th>PAY_AMT5</th>
+      <th>PAY_AMT6</th>
+      <th>default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>20000</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>24</td>
+      <td>2</td>
+      <td>2</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>-2</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>689.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>90000</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>34</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>14331.0</td>
+      <td>14948.0</td>
+      <td>15549.0</td>
+      <td>1518.0</td>
+      <td>1500.0</td>
+      <td>1000.0</td>
+      <td>1000.0</td>
+      <td>1000.0</td>
+      <td>5000.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>50000</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>37</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>28314.0</td>
+      <td>28959.0</td>
+      <td>29547.0</td>
+      <td>2000.0</td>
+      <td>2019.0</td>
+      <td>1200.0</td>
+      <td>1100.0</td>
+      <td>1069.0</td>
+      <td>1000.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>50000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>57</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>-1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>20940.0</td>
+      <td>19146.0</td>
+      <td>19131.0</td>
+      <td>2000.0</td>
+      <td>36681.0</td>
+      <td>10000.0</td>
+      <td>9000.0</td>
+      <td>689.0</td>
+      <td>679.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>50000</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>37</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>19394.0</td>
+      <td>19619.0</td>
+      <td>20024.0</td>
+      <td>2500.0</td>
+      <td>1815.0</td>
+      <td>657.0</td>
+      <td>1000.0</td>
+      <td>1000.0</td>
+      <td>800.0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-b1e931e3-7220-444c-b503-4142de4c821c')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-b1e931e3-7220-444c-b503-4142de4c821c button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-b1e931e3-7220-444c-b503-4142de4c821c&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dataset.info()</span><br></pre></td></tr></table></figure>
+
+
+
+<script src="/static/components/requirejs/require.js"></script>
+<script>
+  requirejs.config({
+    paths: {
+      base: '/static/base',
+      plotly: 'https://cdn.plot.ly/plotly-latest.min.js?noext',
+    },
+  });
+</script>
+
+
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 24000 entries, 0 to 23999
+Data columns (total 24 columns):
+ #   Column     Non-Null Count  Dtype  
+---  ------     --------------  -----  
+ 0   LIMIT_BAL  24000 non-null  int64  
+ 1   SEX        24000 non-null  int64  
+ 2   EDUCATION  24000 non-null  int64  
+ 3   MARRIAGE   24000 non-null  int64  
+ 4   AGE        24000 non-null  int64  
+ 5   PAY_1      24000 non-null  int64  
+ 6   PAY_2      24000 non-null  int64  
+ 7   PAY_3      24000 non-null  int64  
+ 8   PAY_4      24000 non-null  int64  
+ 9   PAY_5      24000 non-null  int64  
+ 10  PAY_6      24000 non-null  int64  
+ 11  BILL_AMT1  24000 non-null  float64
+ 12  BILL_AMT2  24000 non-null  float64
+ 13  BILL_AMT3  24000 non-null  float64
+ 14  BILL_AMT4  24000 non-null  float64
+ 15  BILL_AMT5  24000 non-null  float64
+ 16  BILL_AMT6  24000 non-null  float64
+ 17  PAY_AMT1   24000 non-null  float64
+ 18  PAY_AMT2   24000 non-null  float64
+ 19  PAY_AMT3   24000 non-null  float64
+ 20  PAY_AMT4   24000 non-null  float64
+ 21  PAY_AMT5   24000 non-null  float64
+ 22  PAY_AMT6   24000 non-null  float64
+ 23  default    24000 non-null  int64  
+dtypes: float64(12), int64(12)
+memory usage: 4.4 MB
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data = dataset.sample(frac=<span class="number">0.95</span>, random_state=<span class="number">786</span>)</span><br><span class="line">data_unseen = dataset.drop(data.index)</span><br><span class="line">data.reset_index(inplace=<span class="literal">True</span>, drop=<span class="literal">True</span>)</span><br><span class="line">data_unseen.reset_index(inplace=<span class="literal">True</span>, drop=<span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Data for Modeling: &#x27;</span> + <span class="built_in">str</span>(data.shape))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Unseen Data For Predictions: &#x27;</span> + <span class="built_in">str</span>(data_unseen.shape))</span><br></pre></td></tr></table></figure>
+
+
+
+<script src="/static/components/requirejs/require.js"></script>
+<script>
+  requirejs.config({
+    paths: {
+      base: '/static/base',
+      plotly: 'https://cdn.plot.ly/plotly-latest.min.js?noext',
+    },
+  });
+</script>
+
+
+
+<pre><code>Data for Modeling: (22800, 24)
+Unseen Data For Predictions: (1200, 24)
+</code></pre>
+<ul>
+<li>setup</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jinja2</span><br><span class="line"><span class="keyword">from</span> pycaret.classification <span class="keyword">import</span> *</span><br><span class="line">exp_clf101 = setup(data = data, target = <span class="string">&#x27;default&#x27;</span>, session_id=<span class="number">123</span>) </span><br></pre></td></tr></table></figure>
+
+
+
+  <div id="df-8cd9911f-84a2-401a-a8e7-52af20909a6c">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Description</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>session_id</td>
+      <td>123</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Target</td>
+      <td>default</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Target Type</td>
+      <td>Binary</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Label Encoded</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Original Data</td>
+      <td>(22800, 24)</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Missing Values</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Numeric Features</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Categorical Features</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Ordinal Features</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>High Cardinality Features</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>High Cardinality Method</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Transformed Train Set</td>
+      <td>(15959, 88)</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Transformed Test Set</td>
+      <td>(6841, 88)</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Shuffle Train-Test</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Stratify Train-Test</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Fold Generator</td>
+      <td>StratifiedKFold</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Fold Number</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>CPU Jobs</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Use GPU</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Log Experiment</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Experiment Name</td>
+      <td>clf-default-name</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>USI</td>
+      <td>954a</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Imputation Type</td>
+      <td>simple</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Iterative Imputation Iteration</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Numeric Imputer</td>
+      <td>mean</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Iterative Imputation Numeric Model</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Categorical Imputer</td>
+      <td>constant</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Iterative Imputation Categorical Model</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Unknown Categoricals Handling</td>
+      <td>least_frequent</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Normalize</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Normalize Method</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Transformation</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Transformation Method</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>PCA</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>PCA Method</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>PCA Components</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Ignore Low Variance</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Combine Rare Levels</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Rare Level Threshold</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Numeric Binning</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Remove Outliers</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Outliers Threshold</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Remove Multicollinearity</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Multicollinearity Threshold</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Remove Perfect Collinearity</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Clustering</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Clustering Iteration</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>Polynomial Features</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Polynomial Degree</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Trignometry Features</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>Polynomial Threshold</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>Group Features</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>Feature Selection</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>Feature Selection Method</td>
+      <td>classic</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>Features Selection Threshold</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>Feature Interaction</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>Feature Ratio</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>Interaction Threshold</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>Fix Imbalance</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>Fix Imbalance Method</td>
+      <td>SMOTE</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-8cd9911f-84a2-401a-a8e7-52af20909a6c')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-8cd9911f-84a2-401a-a8e7-52af20909a6c button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-8cd9911f-84a2-401a-a8e7-52af20909a6c&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+<h2 id="모델링"><a href="#모델링" class="headerlink" title="모델링"></a>모델링</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">best_model = compare_models()</span><br></pre></td></tr></table></figure>
+
+
+
+  <div id="df-e11450b7-cda5-4b61-84ec-4713e7cb5f31">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model</th>
+      <th>Accuracy</th>
+      <th>AUC</th>
+      <th>Recall</th>
+      <th>Prec.</th>
+      <th>F1</th>
+      <th>Kappa</th>
+      <th>MCC</th>
+      <th>TT (Sec)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ridge</th>
+      <td>Ridge Classifier</td>
+      <td>0.8254</td>
+      <td>0.0000</td>
+      <td>0.3637</td>
+      <td>0.6913</td>
+      <td>0.4764</td>
+      <td>0.3836</td>
+      <td>0.4122</td>
+      <td>0.047</td>
+    </tr>
+    <tr>
+      <th>lda</th>
+      <td>Linear Discriminant Analysis</td>
+      <td>0.8247</td>
+      <td>0.7634</td>
+      <td>0.3755</td>
+      <td>0.6794</td>
+      <td>0.4835</td>
+      <td>0.3884</td>
+      <td>0.4132</td>
+      <td>0.317</td>
+    </tr>
+    <tr>
+      <th>gbc</th>
+      <td>Gradient Boosting Classifier</td>
+      <td>0.8226</td>
+      <td>0.7789</td>
+      <td>0.3551</td>
+      <td>0.6806</td>
+      <td>0.4664</td>
+      <td>0.3725</td>
+      <td>0.4010</td>
+      <td>5.107</td>
+    </tr>
+    <tr>
+      <th>ada</th>
+      <td>Ada Boost Classifier</td>
+      <td>0.8221</td>
+      <td>0.7697</td>
+      <td>0.3505</td>
+      <td>0.6811</td>
+      <td>0.4626</td>
+      <td>0.3690</td>
+      <td>0.3983</td>
+      <td>1.204</td>
+    </tr>
+    <tr>
+      <th>lightgbm</th>
+      <td>Light Gradient Boosting Machine</td>
+      <td>0.8210</td>
+      <td>0.7750</td>
+      <td>0.3609</td>
+      <td>0.6679</td>
+      <td>0.4683</td>
+      <td>0.3721</td>
+      <td>0.3977</td>
+      <td>0.432</td>
+    </tr>
+    <tr>
+      <th>rf</th>
+      <td>Random Forest Classifier</td>
+      <td>0.8199</td>
+      <td>0.7598</td>
+      <td>0.3663</td>
+      <td>0.6601</td>
+      <td>0.4707</td>
+      <td>0.3727</td>
+      <td>0.3965</td>
+      <td>2.767</td>
+    </tr>
+    <tr>
+      <th>et</th>
+      <td>Extra Trees Classifier</td>
+      <td>0.8092</td>
+      <td>0.7377</td>
+      <td>0.3677</td>
+      <td>0.6047</td>
+      <td>0.4571</td>
+      <td>0.3497</td>
+      <td>0.3657</td>
+      <td>2.293</td>
+    </tr>
+    <tr>
+      <th>lr</th>
+      <td>Logistic Regression</td>
+      <td>0.7814</td>
+      <td>0.6410</td>
+      <td>0.0003</td>
+      <td>0.1000</td>
+      <td>0.0006</td>
+      <td>0.0003</td>
+      <td>0.0034</td>
+      <td>0.875</td>
+    </tr>
+    <tr>
+      <th>dummy</th>
+      <td>Dummy Classifier</td>
+      <td>0.7814</td>
+      <td>0.5000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.032</td>
+    </tr>
+    <tr>
+      <th>knn</th>
+      <td>K Neighbors Classifier</td>
+      <td>0.7547</td>
+      <td>0.5939</td>
+      <td>0.1763</td>
+      <td>0.3719</td>
+      <td>0.2388</td>
+      <td>0.1145</td>
+      <td>0.1259</td>
+      <td>0.846</td>
+    </tr>
+    <tr>
+      <th>dt</th>
+      <td>Decision Tree Classifier</td>
+      <td>0.7293</td>
+      <td>0.6147</td>
+      <td>0.4104</td>
+      <td>0.3878</td>
+      <td>0.3986</td>
+      <td>0.2242</td>
+      <td>0.2245</td>
+      <td>0.331</td>
+    </tr>
+    <tr>
+      <th>svm</th>
+      <td>SVM - Linear Kernel</td>
+      <td>0.7277</td>
+      <td>0.0000</td>
+      <td>0.1017</td>
+      <td>0.1671</td>
+      <td>0.0984</td>
+      <td>0.0067</td>
+      <td>0.0075</td>
+      <td>0.418</td>
+    </tr>
+    <tr>
+      <th>qda</th>
+      <td>Quadratic Discriminant Analysis</td>
+      <td>0.5098</td>
+      <td>0.5473</td>
+      <td>0.6141</td>
+      <td>0.2472</td>
+      <td>0.3488</td>
+      <td>0.0600</td>
+      <td>0.0805</td>
+      <td>0.179</td>
+    </tr>
+    <tr>
+      <th>nb</th>
+      <td>Naive Bayes</td>
+      <td>0.3760</td>
+      <td>0.6442</td>
+      <td>0.8845</td>
+      <td>0.2441</td>
+      <td>0.3826</td>
+      <td>0.0608</td>
+      <td>0.1207</td>
+      <td>0.046</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-e11450b7-cda5-4b61-84ec-4713e7cb5f31')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-e11450b7-cda5-4b61-84ec-4713e7cb5f31 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-e11450b7-cda5-4b61-84ec-4713e7cb5f31&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(best_model)</span><br></pre></td></tr></table></figure>
+
+
+
+<script src="/static/components/requirejs/require.js"></script>
+<script>
+  requirejs.config({
+    paths: {
+      base: '/static/base',
+      plotly: 'https://cdn.plot.ly/plotly-latest.min.js?noext',
+    },
+  });
+</script>
+
+
+
+<pre><code>RidgeClassifier(alpha=1.0, class_weight=None, copy_X=True, fit_intercept=True,
+                max_iter=None, normalize=False, random_state=123, solver=&#39;auto&#39;,
+                tol=0.001)
+</code></pre>
+<ul>
+<li>모델 생성</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">knn_model = create_model(<span class="string">&#x27;knn&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+  <div id="df-72519489-8e58-45aa-a268-24cd9a3c83d2">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Accuracy</th>
+      <th>AUC</th>
+      <th>Recall</th>
+      <th>Prec.</th>
+      <th>F1</th>
+      <th>Kappa</th>
+      <th>MCC</th>
+    </tr>
+    <tr>
+      <th>Fold</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.7469</td>
+      <td>0.6020</td>
+      <td>0.1920</td>
+      <td>0.3545</td>
+      <td>0.2491</td>
+      <td>0.1128</td>
+      <td>0.1204</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.7550</td>
+      <td>0.5894</td>
+      <td>0.2092</td>
+      <td>0.3883</td>
+      <td>0.2719</td>
+      <td>0.1402</td>
+      <td>0.1500</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.7506</td>
+      <td>0.5883</td>
+      <td>0.1576</td>
+      <td>0.3459</td>
+      <td>0.2165</td>
+      <td>0.0923</td>
+      <td>0.1024</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.7419</td>
+      <td>0.5818</td>
+      <td>0.1519</td>
+      <td>0.3136</td>
+      <td>0.2046</td>
+      <td>0.0723</td>
+      <td>0.0790</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.7563</td>
+      <td>0.5908</td>
+      <td>0.1490</td>
+      <td>0.3611</td>
+      <td>0.2110</td>
+      <td>0.0954</td>
+      <td>0.1085</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.7550</td>
+      <td>0.5997</td>
+      <td>0.1748</td>
+      <td>0.3720</td>
+      <td>0.2378</td>
+      <td>0.1139</td>
+      <td>0.1255</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.7638</td>
+      <td>0.5890</td>
+      <td>0.1891</td>
+      <td>0.4125</td>
+      <td>0.2593</td>
+      <td>0.1413</td>
+      <td>0.1565</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.7613</td>
+      <td>0.6240</td>
+      <td>0.1633</td>
+      <td>0.3904</td>
+      <td>0.2303</td>
+      <td>0.1163</td>
+      <td>0.1318</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.7619</td>
+      <td>0.5988</td>
+      <td>0.1862</td>
+      <td>0.4037</td>
+      <td>0.2549</td>
+      <td>0.1356</td>
+      <td>0.1500</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.7549</td>
+      <td>0.5756</td>
+      <td>0.1897</td>
+      <td>0.3771</td>
+      <td>0.2524</td>
+      <td>0.1246</td>
+      <td>0.1351</td>
+    </tr>
+    <tr>
+      <th>Mean</th>
+      <td>0.7547</td>
+      <td>0.5939</td>
+      <td>0.1763</td>
+      <td>0.3719</td>
+      <td>0.2388</td>
+      <td>0.1145</td>
+      <td>0.1259</td>
+    </tr>
+    <tr>
+      <th>Std</th>
+      <td>0.0065</td>
+      <td>0.0126</td>
+      <td>0.0191</td>
+      <td>0.0279</td>
+      <td>0.0214</td>
+      <td>0.0214</td>
+      <td>0.0230</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-72519489-8e58-45aa-a268-24cd9a3c83d2')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-72519489-8e58-45aa-a268-24cd9a3c83d2 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-72519489-8e58-45aa-a268-24cd9a3c83d2&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">params = &#123;</span><br><span class="line">    <span class="string">&#x27;n_neighbors&#x27;</span> : np.arange(<span class="number">0</span>,<span class="number">50</span>,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tunned_knn = tune_model(knn_model,custom_grid=params)</span><br><span class="line"><span class="built_in">print</span>(tunned_knn)</span><br></pre></td></tr></table></figure>
+
+
+
+  <div id="df-33cf8c79-c42e-4ef5-873a-23afc3c6e178">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Accuracy</th>
+      <th>AUC</th>
+      <th>Recall</th>
+      <th>Prec.</th>
+      <th>F1</th>
+      <th>Kappa</th>
+      <th>MCC</th>
+    </tr>
+    <tr>
+      <th>Fold</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.7813</td>
+      <td>0.6482</td>
+      <td>0.0372</td>
+      <td>0.5000</td>
+      <td>0.0693</td>
+      <td>0.0402</td>
+      <td>0.0876</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.7807</td>
+      <td>0.6436</td>
+      <td>0.0315</td>
+      <td>0.4783</td>
+      <td>0.0591</td>
+      <td>0.0330</td>
+      <td>0.0759</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.7744</td>
+      <td>0.6563</td>
+      <td>0.0315</td>
+      <td>0.3333</td>
+      <td>0.0576</td>
+      <td>0.0206</td>
+      <td>0.0403</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.7845</td>
+      <td>0.6589</td>
+      <td>0.0659</td>
+      <td>0.5610</td>
+      <td>0.1179</td>
+      <td>0.0754</td>
+      <td>0.1345</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.7826</td>
+      <td>0.6645</td>
+      <td>0.0315</td>
+      <td>0.5500</td>
+      <td>0.0596</td>
+      <td>0.0368</td>
+      <td>0.0903</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.7794</td>
+      <td>0.6477</td>
+      <td>0.0544</td>
+      <td>0.4634</td>
+      <td>0.0974</td>
+      <td>0.0539</td>
+      <td>0.0961</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.7826</td>
+      <td>0.6278</td>
+      <td>0.0630</td>
+      <td>0.5238</td>
+      <td>0.1125</td>
+      <td>0.0688</td>
+      <td>0.1214</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.7751</td>
+      <td>0.6702</td>
+      <td>0.0372</td>
+      <td>0.3611</td>
+      <td>0.0675</td>
+      <td>0.0278</td>
+      <td>0.0523</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.7813</td>
+      <td>0.6409</td>
+      <td>0.0630</td>
+      <td>0.5000</td>
+      <td>0.1120</td>
+      <td>0.0662</td>
+      <td>0.1146</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.7881</td>
+      <td>0.6426</td>
+      <td>0.0661</td>
+      <td>0.6389</td>
+      <td>0.1198</td>
+      <td>0.0822</td>
+      <td>0.1548</td>
+    </tr>
+    <tr>
+      <th>Mean</th>
+      <td>0.7810</td>
+      <td>0.6501</td>
+      <td>0.0482</td>
+      <td>0.4910</td>
+      <td>0.0873</td>
+      <td>0.0505</td>
+      <td>0.0968</td>
+    </tr>
+    <tr>
+      <th>Std</th>
+      <td>0.0039</td>
+      <td>0.0119</td>
+      <td>0.0148</td>
+      <td>0.0861</td>
+      <td>0.0255</td>
+      <td>0.0206</td>
+      <td>0.0338</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-33cf8c79-c42e-4ef5-873a-23afc3c6e178')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-33cf8c79-c42e-4ef5-873a-23afc3c6e178 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-33cf8c79-c42e-4ef5-873a-23afc3c6e178&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+<pre><code>KNeighborsClassifier(algorithm=&#39;auto&#39;, leaf_size=30, metric=&#39;minkowski&#39;,
+                     metric_params=None, n_jobs=-1, n_neighbors=42, p=2,
+                     weights=&#39;uniform&#39;)
+</code></pre>
+<ul>
+<li>auc</li>
+<li>최소 0.5</li>
+<li>좋은 모델 기준 0.8이상</li>
+<li>최고 1</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot_model(tunned_knn,plot=<span class="string">&#x27;auc&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_16_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 의사 결정 트리</span></span><br><span class="line"><span class="comment"># plot_model(tunned_knn,plot=&#x27;feature&#x27;)</span></span><br><span class="line">plot_model(tunned_knn,plot=<span class="string">&#x27;confusion_matrix&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_17_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">evaluate_model(tunned_knn)</span><br></pre></td></tr></table></figure>
+
+
+
+<script src="/static/components/requirejs/require.js"></script>
+<script>
+  requirejs.config({
+    paths: {
+      base: '/static/base',
+      plotly: 'https://cdn.plot.ly/plotly-latest.min.js?noext',
+    },
+  });
+</script>
+
+
+
+
+<pre><code>interactive(children=(ToggleButtons(description=&#39;Plot Type:&#39;, icons=(&#39;&#39;,), options=((&#39;Hyperparameters&#39;, &#39;param…
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">models()</span><br></pre></td></tr></table></figure>
+
+
+
+<script src="/static/components/requirejs/require.js"></script>
+<script>
+  requirejs.config({
+    paths: {
+      base: '/static/base',
+      plotly: 'https://cdn.plot.ly/plotly-latest.min.js?noext',
+    },
+  });
+</script>
+
+
+
+
+
+
+
+  <div id="df-0fc05d64-8925-4e82-bde7-8a672bf8ddd2">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Reference</th>
+      <th>Turbo</th>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>lr</th>
+      <td>Logistic Regression</td>
+      <td>sklearn.linear_model._logistic.LogisticRegression</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>knn</th>
+      <td>K Neighbors Classifier</td>
+      <td>sklearn.neighbors._classification.KNeighborsCl...</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>nb</th>
+      <td>Naive Bayes</td>
+      <td>sklearn.naive_bayes.GaussianNB</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>dt</th>
+      <td>Decision Tree Classifier</td>
+      <td>sklearn.tree._classes.DecisionTreeClassifier</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>svm</th>
+      <td>SVM - Linear Kernel</td>
+      <td>sklearn.linear_model._stochastic_gradient.SGDC...</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>rbfsvm</th>
+      <td>SVM - Radial Kernel</td>
+      <td>sklearn.svm._classes.SVC</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>gpc</th>
+      <td>Gaussian Process Classifier</td>
+      <td>sklearn.gaussian_process._gpc.GaussianProcessC...</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>mlp</th>
+      <td>MLP Classifier</td>
+      <td>sklearn.neural_network._multilayer_perceptron....</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>ridge</th>
+      <td>Ridge Classifier</td>
+      <td>sklearn.linear_model._ridge.RidgeClassifier</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>rf</th>
+      <td>Random Forest Classifier</td>
+      <td>sklearn.ensemble._forest.RandomForestClassifier</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>qda</th>
+      <td>Quadratic Discriminant Analysis</td>
+      <td>sklearn.discriminant_analysis.QuadraticDiscrim...</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>ada</th>
+      <td>Ada Boost Classifier</td>
+      <td>sklearn.ensemble._weight_boosting.AdaBoostClas...</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>gbc</th>
+      <td>Gradient Boosting Classifier</td>
+      <td>sklearn.ensemble._gb.GradientBoostingClassifier</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>lda</th>
+      <td>Linear Discriminant Analysis</td>
+      <td>sklearn.discriminant_analysis.LinearDiscrimina...</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>et</th>
+      <td>Extra Trees Classifier</td>
+      <td>sklearn.ensemble._forest.ExtraTreesClassifier</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>lightgbm</th>
+      <td>Light Gradient Boosting Machine</td>
+      <td>lightgbm.sklearn.LGBMClassifier</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>dummy</th>
+      <td>Dummy Classifier</td>
+      <td>sklearn.dummy.DummyClassifier</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-0fc05d64-8925-4e82-bde7-8a672bf8ddd2')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+<p>  &lt;svg xmlns&#x3D;”<a target="_blank" rel="noopener" href="http://www.w3.org/2000/svg&quot;">http://www.w3.org/2000/svg&quot;</a> height&#x3D;”24px”viewBox&#x3D;”0 0 24 24”<br>       width&#x3D;”24px”&gt;<br>    <path d="M0 0h24v24H0V0z" fill="none"/><br>    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/><br>  </svg><br>      </button></p>
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+<pre><code>  &lt;script&gt;
+    const buttonEl =
+      document.querySelector(&#39;#df-0fc05d64-8925-4e82-bde7-8a672bf8ddd2 button.colab-df-convert&#39;);
+    buttonEl.style.display =
+      google.colab.kernel.accessAllowed ? &#39;block&#39; : &#39;none&#39;;
+
+    async function convertToInteractive(key) &#123;
+      const element = document.querySelector(&#39;#df-0fc05d64-8925-4e82-bde7-8a672bf8ddd2&#39;);
+      const dataTable =
+        await google.colab.kernel.invokeFunction(&#39;convertToInteractive&#39;,
+                                                 [key], &#123;&#125;);
+      if (!dataTable) return;
+
+      const docLinkHtml = &#39;Like what you see? Visit the &#39; +
+        &#39;&lt;a target=&quot;_blank&quot; href=https://colab.research.google.com/notebooks/data_table.ipynb&gt;data table notebook&lt;/a&gt;&#39;
+        + &#39; to learn more about interactive tables.&#39;;
+      element.innerHTML = &#39;&#39;;
+      dataTable[&#39;output_type&#39;] = &#39;display_data&#39;;
+      await google.colab.output.renderOutput(dataTable, element);
+      const docLink = document.createElement(&#39;div&#39;);
+      docLink.innerHTML = docLinkHtml;
+      element.appendChild(docLink);
+    &#125;
+  &lt;/script&gt;
+&lt;/div&gt;
+</code></pre>
+  </div>
+
+
+
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-07-05T07:00:00.000Z" title="2022. 7. 5. 오후 4:00:00">2022-07-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-07-05T06:58:59.032Z" title="2022. 7. 5. 오후 3:58:59">2022-07-05</time></span><span class="level-item">11 minutes read (About 1629 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/07/05/Day0705_ch05_ch6/">day0705_ch5_ch6</a></h1><div class="content"><h2 id="트리의-앙상블"><a href="#트리의-앙상블" class="headerlink" title="트리의 앙상블"></a>트리의 앙상블</h2><ul>
+<li>랜덤 포레스트 ( 나무1개 )</li>
+</ul>
+<ul>
+<li>여러 개 심음</li>
+<li>샘플링</li>
+<li>Feature Importance</li>
+</ul>
+<ul>
+<li>예측해야할 행의 갯수, 100만개</li>
+<li>컬럼의 갯수 200개 —&gt; 100개</li>
+</ul>
+<ul>
+<li>나무 100개르 심고 평균을 내자</li>
+<li>나무 1개 당 컬럼을 10개로</li>
+<li>T1 mae : 20 &#x2F; T2 mae : 30 &#x2F; T3 : mae : 10 ….<ul>
+<li>T1 ~ T100 mae : 200</li>
+<li>Feature Importance</li>
+</ul>
+</li>
+<li>sampling : bootstrap  (복원추출)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 라이브러리 불러오기</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 불러오기</span></span><br><span class="line">wine = pd.read_csv(<span class="string">&#x27;http://bit.ly/wine_csv_data&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># input, target 분리</span></span><br><span class="line">data = wine [[<span class="string">&#x27;alcohol&#x27;</span>,<span class="string">&#x27;sugar&#x27;</span>,<span class="string">&#x27;pH&#x27;</span>]].to_numpy()</span><br><span class="line">target = wine[<span class="string">&#x27;class&#x27;</span>].to_numpy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련 데이터, 테스트 데이터 분리</span></span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">  data, target, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 모델링</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_validate</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line">rf = RandomForestClassifier(n_jobs=-<span class="number">1</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 모형 평가</span></span><br><span class="line">scores = cross_validate(rf,train_input,train_target,</span><br><span class="line">                        return_train_score=<span class="literal">True</span>, n_jobs=-<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(np.mean(scores[<span class="string">&#x27;train_score&#x27;</span>]),np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 특성 중요</span></span><br><span class="line">rf.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(rf.feature_importances_)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9973541965122431 0.8905151032797809
+[0.23167441 0.50039841 0.26792718]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 00B</span></span><br><span class="line">rf = RandomForestClassifier(oob_score = <span class="literal">True</span>, n_jobs=-<span class="number">1</span>,random_state=<span class="number">42</span>)</span><br><span class="line">rf.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(rf.oob_score_)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>0.8934000384837406
+</code></pre>
+<ul>
+<li>엑스트라 트리</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> ExtraTreesClassifier</span><br><span class="line"></span><br><span class="line">et = ExtraTreesClassifier(n_jobs=-<span class="number">1</span>, random_state=<span class="number">42</span>)</span><br><span class="line">scores = cross_validate(et, train_input, train_target, return_train_score=<span class="literal">True</span>, n_jobs=-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(np.mean(scores[<span class="string">&#x27;train_score&#x27;</span>]), np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9974503966084433 0.8887848893166506
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">et.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(et.feature_importances_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0.20183568 0.52242907 0.27573525]
+</code></pre>
+<ul>
+<li><p>그레이디언트 부스팅 # 개념만 이해하면 된다.</p>
+<ul>
+<li>경사하강법의 원리를 이용함</li>
+<li>T1 ~ TN 증가하면서 오차를 보정해주며 정확성을  높임</li>
+<li>랜덤포레스트와의 차이점<ul>
+<li>랜덤포레스트는 각 나무 간 상호 연관성 없음</li>
+<li>부스팅은 각 나무 간 상호 연관성 있음</li>
+</ul>
+</li>
+<li>단점 <ul>
+<li>속도가 너무 느리다</li>
+</ul>
+</li>
+<li>대안<ul>
+<li>XBoost, LightGBM</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier</span><br><span class="line"></span><br><span class="line">gb = GradientBoostingClassifier(random_state=<span class="number">42</span>)</span><br><span class="line">scores = cross_validate(gb, train_input, train_target, return_train_score=<span class="literal">True</span>, n_jobs=-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(np.mean(scores[<span class="string">&#x27;train_score&#x27;</span>]), np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.8881086892152563 0.8720430147331015
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gb = GradientBoostingClassifier(n_estimators=<span class="number">500</span>, learning_rate=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br><span class="line">scores = cross_validate(gb, train_input, train_target, return_train_score=<span class="literal">True</span>, n_jobs=-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(np.mean(scores[<span class="string">&#x27;train_score&#x27;</span>]), np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9464595437171814 0.8780082549788999
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gb.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(gb.feature_importances_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0.15872278 0.68010884 0.16116839]
+</code></pre>
+<h2 id="히스토그램-기반-그레이디언트-부스팅"><a href="#히스토그램-기반-그레이디언트-부스팅" class="headerlink" title="히스토그램 기반 그레이디언트 부스팅"></a>히스토그램 기반 그레이디언트 부스팅</h2><ul>
+<li>하지말기.</li>
+</ul>
+<h2 id="06-1-군집-알고리즘"><a href="#06-1-군집-알고리즘" class="headerlink" title="06-1 군집 알고리즘"></a>06-1 군집 알고리즘</h2><h3 id="실무에서의-난이도"><a href="#실무에서의-난이도" class="headerlink" title="실무에서의 난이도"></a>실무에서의 난이도</h3><p>비지도학습 &gt;&gt;&gt; 지도 학습<br>비지도 학습<br>–&gt; 분류<br>–&gt; 수치적으로 분류</p>
+<p>주성분 분석</p>
+<ul>
+<li>이론적으로는 어려움</li>
+<li>좌표계 공간 개념</li>
+<li>직교 + 회전</li>
+<li>공분산 등 ( 통계 관련 내용 )</li>
+<li>Feature Engineering 기법</li>
+<li>StandardScaler()</li>
+<li>현 ML(Machine LEarning)의 문제점:컬럼의 갯수가 너무 !! 많다.</li>
+</ul>
+<ul>
+<li>왜 많냐면 ..</li>
+</ul>
+<ul>
+<li>차원 축소</li>
+</ul>
+<ul>
+<li>특성이 많으면 훈련 데이터에 쉽게 과대적합된다.</li>
+<li>특성을 줄여서 학습 모델의 성능을 향산시킨다.</li>
+<li>모델의 학습 시간을 감소시켜줌</li>
+<li>대표적인 방법론 중 둘 : PCA, EFA</li>
+</ul>
+<ul>
+<li>EFA &#x2F; PCA</li>
+</ul>
+<ul>
+<li><p>EFA( 탐색적 요인 분석 ) (&#x3D; Factor Analysis )</p>
+<ul>
+<li>국어, 수학, 과학, 영어</li>
+<li>국어 40, 수학 100 과학 100 영어 30&#x2F;<br> 귀 학생을 언어영억은 수준이 낮은편이나 수리영역은 매우 수준이 높습니다.</li>
+<li>범주형 &amp; 수치 데이터 셋</li>
+</ul>
+</li>
+<li><p>PCA ( 주성분 분석 )</p>
+<ul>
+<li>장비1, 장비2, 장비3, , , , </li>
+<li>pc1, pc2, pc3, pc4,,,</li>
+<li>원래 가지고 있던 정보를 알 수 없음.(정보손실)</li>
+<li>범주형 데이터셋에는 사용 안됨</li>
+<li>무조건 수치형 데이터에서만 사용</li>
+<li>pca 하기 전, 표준화하기(스케일링 실행)&#x3D;<br> x축, y축의 단위 동일화하기.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 데이터 가져오기 </span></span><br><span class="line">!wget https://bit.ly/fruits_300_data -O fruits_300.npy <span class="comment"># zero아니고 alphabet O다.</span></span><br><span class="line"><span class="comment"># p.287에 ! 는 뭔가요 보기.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>--2022-07-05 04:47:49--  https://bit.ly/fruits_300_data
+Resolving bit.ly (bit.ly)... 67.199.248.11, 67.199.248.10
+Connecting to bit.ly (bit.ly)|67.199.248.11|:443... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://github.com/rickiepark/hg-mldl/raw/master/fruits_300.npy [following]
+--2022-07-05 04:47:49--  https://github.com/rickiepark/hg-mldl/raw/master/fruits_300.npy
+Resolving github.com (github.com)... 192.30.255.112
+Connecting to github.com (github.com)|192.30.255.112|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/rickiepark/hg-mldl/master/fruits_300.npy [following]
+--2022-07-05 04:47:50--  https://raw.githubusercontent.com/rickiepark/hg-mldl/master/fruits_300.npy
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3000128 (2.9M) [application/octet-stream]
+Saving to: ‘fruits_300.npy’
+
+fruits_300.npy      100%[===================&gt;]   2.86M  --.-KB/s    in 0.05s   
+
+2022-07-05 04:47:50 (60.3 MB/s) - ‘fruits_300.npy’ saved [3000128/3000128]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 라이브러리 불러오기</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">fruits = np.load(<span class="string">&#x27;fruits_300.npy&#x27;</span>)</span><br><span class="line">fruits_2d = fruits.reshape(-<span class="number">1</span>,<span class="number">100</span>*<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 확인이나 해보자</span></span><br><span class="line"><span class="built_in">print</span>(fruits)</span><br><span class="line"><span class="built_in">print</span>(fruits_2d)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[[1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  ...
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]]
+
+ [[1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  ...
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]]
+
+ [[1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  ...
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]]
+
+ ...
+
+ [[1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  ...
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]]
+
+ [[1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  ...
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]]
+
+ [[1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  ...
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]
+  [1 1 1 ... 1 1 1]]]
+[[1 1 1 ... 1 1 1]
+ [1 1 1 ... 1 1 1]
+ [1 1 1 ... 1 1 1]
+ ...
+ [1 1 1 ... 1 1 1]
+ [1 1 1 ... 1 1 1]
+ [1 1 1 ... 1 1 1]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 모델링</span></span><br><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line">pca = PCA(n_components = <span class="number">50</span> )</span><br><span class="line">pca.fit(fruits_2d)</span><br><span class="line"><span class="comment"># 10,000개의 데이터를 50개로 줄인다는 뜻이다.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>PCA(n_components=50)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(pca.components_.shape) </span><br></pre></td></tr></table></figure>
+
+<pre><code>(50, 10000)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw_fruits</span>(<span class="params">arr, ratio=<span class="number">1</span></span>):</span><br><span class="line">    n = <span class="built_in">len</span>(arr)    <span class="comment"># n은 샘플 개수입니다</span></span><br><span class="line">    <span class="comment"># 한 줄에 10개씩 이미지를 그립니다. 샘플 개수를 10으로 나누어 전체 행 개수를 계산합니다. </span></span><br><span class="line">    rows = <span class="built_in">int</span>(np.ceil(n/<span class="number">10</span>))</span><br><span class="line">    <span class="comment"># 행이 1개 이면 열 개수는 샘플 개수입니다. 그렇지 않으면 10개입니다.</span></span><br><span class="line">    cols = n <span class="keyword">if</span> rows &lt; <span class="number">2</span> <span class="keyword">else</span> <span class="number">10</span></span><br><span class="line">    fig, axs = plt.subplots(rows, cols, </span><br><span class="line">                            figsize=(cols*ratio, rows*ratio), squeeze=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(rows):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(cols):</span><br><span class="line">            <span class="keyword">if</span> i*<span class="number">10</span> + j &lt; n:    <span class="comment"># n 개까지만 그립니다.</span></span><br><span class="line">                axs[i, j].imshow(arr[i*<span class="number">10</span> + j], cmap=<span class="string">&#x27;gray_r&#x27;</span>)</span><br><span class="line">            axs[i, j].axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(pca.components_.reshape(-<span class="number">1</span>,<span class="number">100</span>,<span class="number">100</span>))</span><br><span class="line"><span class="comment"># 나는 왜 그림이 나오지 않는 것인가 !! </span></span><br></pre></td></tr></table></figure>
+
+<pre><code>[[[ 9.24490195e-06  5.10601298e-06  8.91640398e-06 ...  3.64260921e-06
+    9.34252918e-07  4.67126459e-06]
+  [ 1.15833514e-05  5.76383497e-07  4.14828737e-06 ...  0.00000000e+00
+    9.02785432e-07  0.00000000e+00]
+  [ 5.83134163e-06  2.29451889e-06  1.61700364e-06 ...  0.00000000e+00
+    4.60832962e-06  0.00000000e+00]
+  ...
+  [ 0.00000000e+00  0.00000000e+00  0.00000000e+00 ...  0.00000000e+00
+    0.00000000e+00  0.00000000e+00]
+  [ 0.00000000e+00  0.00000000e+00  0.00000000e+00 ...  0.00000000e+00
+    0.00000000e+00  0.00000000e+00]
+  [ 0.00000000e+00  0.00000000e+00  0.00000000e+00 ...  0.00000000e+00
+    0.00000000e+00  0.00000000e+00]]
+
+ [[-1.69701613e-05 -1.13551047e-05 -1.82152561e-05 ... -6.85415826e-06
+   -1.72461747e-06 -8.62308735e-06]
+  [-1.83988224e-05 -5.12361973e-06 -6.86007645e-06 ... -0.00000000e+00
+   -1.70984693e-06 -0.00000000e+00]
+  [-9.48385290e-06 -3.28956277e-06 -1.59769056e-06 ... -0.00000000e+00
+   -8.59354627e-06 -0.00000000e+00]
+  ...
+  [-0.00000000e+00 -0.00000000e+00 -0.00000000e+00 ... -0.00000000e+00
+   -0.00000000e+00 -0.00000000e+00]
+  [-0.00000000e+00 -0.00000000e+00 -0.00000000e+00 ... -0.00000000e+00
+   -0.00000000e+00 -0.00000000e+00]
+  [-0.00000000e+00 -0.00000000e+00 -0.00000000e+00 ... -0.00000000e+00
+   -0.00000000e+00 -0.00000000e+00]]
+
+ [[-3.65220479e-05 -2.08401744e-05 -2.89870138e-05 ... -1.07455043e-05
+   -2.28430243e-06 -1.14215121e-05]
+  [-4.71494348e-05 -3.76266648e-06 -1.07501288e-05 ... -0.00000000e+00
+   -2.82040061e-06 -0.00000000e+00]
+  [-2.23009741e-05 -8.26967039e-06 -6.95529298e-06 ... -0.00000000e+00
+   -1.24937085e-05 -0.00000000e+00]
+  ...
+  [-0.00000000e+00 -0.00000000e+00 -0.00000000e+00 ... -0.00000000e+00
+   -0.00000000e+00 -0.00000000e+00]
+  [-0.00000000e+00 -0.00000000e+00 -0.00000000e+00 ... -0.00000000e+00
+   -0.00000000e+00 -0.00000000e+00]
+  [-0.00000000e+00 -0.00000000e+00 -0.00000000e+00 ... -0.00000000e+00
+   -0.00000000e+00 -0.00000000e+00]]
+
+ ...
+
+ [[-2.51432593e-05 -7.92600954e-05 -8.23607786e-05 ... -1.83469572e-06
+   -4.11988751e-06 -2.05994376e-05]
+  [-7.92507818e-05 -2.81531763e-05 -3.39914008e-05 ... -0.00000000e+00
+    7.61730597e-07 -0.00000000e+00]
+  [-5.33663918e-05 -4.56116856e-05 -3.15206037e-05 ... -0.00000000e+00
+   -1.08362013e-05 -0.00000000e+00]
+  ...
+  [-0.00000000e+00 -0.00000000e+00 -0.00000000e+00 ... -0.00000000e+00
+   -0.00000000e+00 -0.00000000e+00]
+  [-0.00000000e+00 -0.00000000e+00 -0.00000000e+00 ... -0.00000000e+00
+   -0.00000000e+00 -0.00000000e+00]
+  [-0.00000000e+00 -0.00000000e+00 -0.00000000e+00 ... -0.00000000e+00
+   -0.00000000e+00 -0.00000000e+00]]
+
+ [[ 2.57743887e-05  7.93202087e-05  1.00202288e-04 ... -2.14844721e-05
+   -2.89642108e-06 -1.44821054e-05]
+  [ 2.31050308e-06  6.06796251e-05  3.07111026e-05 ... -0.00000000e+00
+   -6.19601701e-06 -0.00000000e+00]
+  [ 6.96702046e-05  2.55759163e-05 -5.23724211e-06 ... -0.00000000e+00
+   -2.10812973e-05 -0.00000000e+00]
+  ...
+  [-0.00000000e+00 -0.00000000e+00 -0.00000000e+00 ... -0.00000000e+00
+   -0.00000000e+00 -0.00000000e+00]
+  [-0.00000000e+00 -0.00000000e+00 -0.00000000e+00 ... -0.00000000e+00
+   -0.00000000e+00 -0.00000000e+00]
+  [-0.00000000e+00 -0.00000000e+00 -0.00000000e+00 ... -0.00000000e+00
+   -0.00000000e+00 -0.00000000e+00]]
+
+ [[ 1.37760143e-04 -5.05654438e-05 -1.52581078e-05 ...  9.64447604e-05
+    1.79898700e-05  8.99493501e-05]
+  [ 1.00495763e-04 -7.18134056e-06 -1.82977600e-05 ...  0.00000000e+00
+    2.61516301e-05  0.00000000e+00]
+  [-6.08594244e-05 -6.22125611e-05  1.39415799e-05 ...  0.00000000e+00
+    1.06272870e-04  0.00000000e+00]
+  ...
+  [ 0.00000000e+00  0.00000000e+00  0.00000000e+00 ...  0.00000000e+00
+    0.00000000e+00  0.00000000e+00]
+  [ 0.00000000e+00  0.00000000e+00  0.00000000e+00 ...  0.00000000e+00
+    0.00000000e+00  0.00000000e+00]
+  [ 0.00000000e+00  0.00000000e+00  0.00000000e+00 ...  0.00000000e+00
+    0.00000000e+00  0.00000000e+00]]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(fruits_2d.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(300, 10000)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ML 에서 컬럼의 갯수를 10,000개를 50개로 줄인 것인다.. ( =압축 )</span></span><br><span class="line">fruits_pca = pca.transform(fruits_2d)</span><br><span class="line"><span class="built_in">print</span>(fruits_pca.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(300, 50)
+</code></pre>
+<ul>
+<li>원본 데이터 재구성</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fruits_inverse = pca.inverse_transform(fruits_pca)</span><br><span class="line"><span class="built_in">print</span>(fruits_inverse.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(300, 10000)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fruits_reconstruct = fruits_inverse.reshape(-<span class="number">1</span>,<span class="number">100</span>,<span class="number">100</span>)</span><br><span class="line"><span class="keyword">for</span> start <span class="keyword">in</span> [<span class="number">0</span>,<span class="number">100</span>,<span class="number">200</span>]:</span><br><span class="line">  draw_fruits(fruits_reconstruct[start:start+<span class="number">100</span>])</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;\n&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_22_0.png" alt="png"></p>
+<p><img src="/output_22_2.png" alt="png"></p>
+<p><img src="/output_22_4.png" alt="png"></p>
+<ul>
+<li>설명된 분산</li>
+</ul>
+<ul>
+<li>&#x3D; 주성분이 원본 데이터의 분산을 얼마나 잘 나타내는지 기록한 값</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 92%</span></span><br><span class="line"><span class="comment"># 원본 이미지 압축</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(np.<span class="built_in">sum</span>(pca.explained_variance_ratio_))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9215747829079223
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(pca.explained_variance_ratio_)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_25_0.png" alt="png"></p>
+<h1 id="PCA의-기능을-알아두자"><a href="#PCA의-기능을-알아두자" class="headerlink" title="PCA의 기능을 알아두자."></a>PCA의 기능을 알아두자.</h1><h5 id="정확도는-조금-떨어지지만-92-속도가-빨라진다-20배"><a href="#정확도는-조금-떨어지지만-92-속도가-빨라진다-20배" class="headerlink" title="정확도는 조금 떨어지지만(92%) 속도가 빨라진다 (20배)"></a>정확도는 조금 떨어지지만(92%) 속도가 빨라진다 (20배)</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-07-04T08:40:00.000Z" title="2022. 7. 4. 오후 5:40:00">2022-07-04</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-07-04T08:33:47.508Z" title="2022. 7. 4. 오후 5:33:47">2022-07-04</time></span><span class="level-item">14 minutes read (About 2027 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/07/04/day0704/">day0704_ml</a></h1><div class="content"><h2 id="확률적-경사-하강법"><a href="#확률적-경사-하강법" class="headerlink" title="확률적 경사 하강법"></a>확률적 경사 하강법</h2><ul>
 <li>점진적 학습 (step, 보폭)</li>
 <li>학습률</li>
 <li>XGBoost, LightGBM, 딥러닝(이미지 분류, 자연어 처리, 옵티마이저)</li>
@@ -8920,97 +11065,7 @@ ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.i
 
 
 <p><img src="/output_81_0.png" alt="png"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-06-30T08:30:00.000Z" title="2022. 6. 30. 오후 5:30:00">2022-06-30</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-06-30T08:30:52.753Z" title="2022. 6. 30. 오후 5:30:52">2022-06-30</time></span><span class="level-item">4 minutes read (About 551 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/06/30/day0630_ml_ch3/">0630_ml_ch3</a></h1><div class="content"><h2 id="K-최근접-이웃-회귀"><a href="#K-최근접-이웃-회귀" class="headerlink" title="K- 최근접 이웃 회귀"></a>K- 최근접 이웃 회귀</h2><ul>
-<li>지도 학습 알고리즘은 크게 분류와 회귀</li>
-<li>지도 학습 : 종속변수 존재</li>
-</ul>
-<ul>
-<li>분류 : 도미와 빙어 분류 문제를 해결</li>
-<li>회귀 : 통계에서 들었던.. y &#x3D; ax + b –&gt; 수치 예측</li>
-</ul>
-<h2 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="built_in">print</span>(np.__version__)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1.21.6
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">perch_length = np.array(</span><br><span class="line">    [<span class="number">8.4</span>, <span class="number">13.7</span>, <span class="number">15.0</span>, <span class="number">16.2</span>, <span class="number">17.4</span>, <span class="number">18.0</span>, <span class="number">18.7</span>, <span class="number">19.0</span>, <span class="number">19.6</span>, <span class="number">20.0</span>, </span><br><span class="line">     <span class="number">21.0</span>, <span class="number">21.0</span>, <span class="number">21.0</span>, <span class="number">21.3</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.5</span>, </span><br><span class="line">     <span class="number">22.5</span>, <span class="number">22.7</span>, <span class="number">23.0</span>, <span class="number">23.5</span>, <span class="number">24.0</span>, <span class="number">24.0</span>, <span class="number">24.6</span>, <span class="number">25.0</span>, <span class="number">25.6</span>, <span class="number">26.5</span>, </span><br><span class="line">     <span class="number">27.3</span>, <span class="number">27.5</span>, <span class="number">27.5</span>, <span class="number">27.5</span>, <span class="number">28.0</span>, <span class="number">28.7</span>, <span class="number">30.0</span>, <span class="number">32.8</span>, <span class="number">34.5</span>, <span class="number">35.0</span>, </span><br><span class="line">     <span class="number">36.5</span>, <span class="number">36.0</span>, <span class="number">37.0</span>, <span class="number">37.0</span>, <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, </span><br><span class="line">     <span class="number">40.0</span>, <span class="number">42.0</span>, <span class="number">43.0</span>, <span class="number">43.0</span>, <span class="number">43.5</span>, <span class="number">44.0</span>]</span><br><span class="line">     )</span><br><span class="line">perch_weight = np.array(</span><br><span class="line">    [<span class="number">5.9</span>, <span class="number">32.0</span>, <span class="number">40.0</span>, <span class="number">51.5</span>, <span class="number">70.0</span>, <span class="number">100.0</span>, <span class="number">78.0</span>, <span class="number">80.0</span>, <span class="number">85.0</span>, <span class="number">85.0</span>, </span><br><span class="line">     <span class="number">110.0</span>, <span class="number">115.0</span>, <span class="number">125.0</span>, <span class="number">130.0</span>, <span class="number">120.0</span>, <span class="number">120.0</span>, <span class="number">130.0</span>, <span class="number">135.0</span>, <span class="number">110.0</span>, </span><br><span class="line">     <span class="number">130.0</span>, <span class="number">150.0</span>, <span class="number">145.0</span>, <span class="number">150.0</span>, <span class="number">170.0</span>, <span class="number">225.0</span>, <span class="number">145.0</span>, <span class="number">188.0</span>, <span class="number">180.0</span>, </span><br><span class="line">     <span class="number">197.0</span>, <span class="number">218.0</span>, <span class="number">300.0</span>, <span class="number">260.0</span>, <span class="number">265.0</span>, <span class="number">250.0</span>, <span class="number">250.0</span>, <span class="number">300.0</span>, <span class="number">320.0</span>, </span><br><span class="line">     <span class="number">514.0</span>, <span class="number">556.0</span>, <span class="number">840.0</span>, <span class="number">685.0</span>, <span class="number">700.0</span>, <span class="number">700.0</span>, <span class="number">690.0</span>, <span class="number">900.0</span>, <span class="number">650.0</span>, </span><br><span class="line">     <span class="number">820.0</span>, <span class="number">850.0</span>, <span class="number">900.0</span>, <span class="number">1015.0</span>, <span class="number">820.0</span>, <span class="number">1100.0</span>, <span class="number">1000.0</span>, <span class="number">1100.0</span>, </span><br><span class="line">     <span class="number">1000.0</span>, <span class="number">1000.0</span>]</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots() <span class="comment">#객체지향</span></span><br><span class="line">plt.scatter(perch_length, perch_weight)</span><br><span class="line">plt.xlabel(<span class="string">&#x27;length&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/output_4_0.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">train_input, test_input, train_target,test_target= train_test_split(perch_length, perch_weight, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">train_input.shape, test_input.shape, train_target.shape, test_target.shape</span><br><span class="line"><span class="built_in">print</span>(train_input.ndim)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1
-</code></pre>
-<ul>
-<li>1차원 배열 –&gt; 2차원 배열</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">train_input = train_input.reshape(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">test_input = test_input.reshape(-<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(train_input.shape, test_input.shape)</span><br><span class="line"><span class="built_in">print</span>(train_input.ndim)</span><br></pre></td></tr></table></figure>
-
-<pre><code>(42, 1) (14, 1)
-2
-</code></pre>
-<h2 id="결정-계수"><a href="#결정-계수" class="headerlink" title="결정 계수"></a>결정 계수</h2><ul>
-<li>정확하다</li>
-<li>0~1 사이의 지표</li>
-<li>1로 수렴할수록 예측 모형에 잘 맞다.</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsRegressor</span><br><span class="line"></span><br><span class="line">knr = KNeighborsRegressor()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 모형 학습</span></span><br><span class="line">knr.fit(train_input, train_target) </span><br><span class="line"></span><br><span class="line"><span class="comment"># 테스트 세트의 점수를 확인한다. </span></span><br><span class="line"><span class="built_in">print</span>(knr.score(test_input, test_target))</span><br></pre></td></tr></table></figure>
-
-<pre><code>0.992809406101064
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"></span><br><span class="line"><span class="comment"># 테스트 세트에 대한 예측을 만든다.</span></span><br><span class="line">test_prediction = knr.predict(test_input)</span><br><span class="line"></span><br><span class="line"><span class="comment">#테스트 세트에 대한 평균 절댓값 오차를 계산한다.</span></span><br><span class="line">mae = mean_absolute_error(test_target, test_prediction)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(mae)</span><br></pre></td></tr></table></figure>
-
-<pre><code>19.157142857142862
-</code></pre>
-<ul>
-<li>예측이 평균적으로 19g 정도 다르다.</li>
-</ul>
-<ul>
-<li>확실한 건 오차가 존재한다.</li>
-<li>19g 정도가 의미하는게 뭐지?</li>
-<li>개선 : 17g</li>
-<li>개선</li>
-<li>… 계속해서 오차를 줄인다.</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(knr.score(train_input, train_target))</span><br></pre></td></tr></table></figure>
-
-<pre><code>0.9698823289099254
-</code></pre>
-<h1 id="과대적합-vs-과소적합"><a href="#과대적합-vs-과소적합" class="headerlink" title="과대적합 vs 과소적합"></a>과대적합 vs 과소적합</h1><ul>
-<li>매우 힘듦. 도망 가자… 우리…by. 선우정아</li>
-<li>과대적합 : 훈련세트 점수 좋음, 테스트 점수 매우 운 좋음</li>
-<li>과소적합 : 테스트 세트의 점수가 매우 좋음</li>
-<li>결론 : 제대로 모형이 훈련되지 않은 것이다.</li>
-</ul>
-<ul>
-<li>모형을 서비스에 합칠 수 없음.</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;훈련평가:&quot;</span>, knr.score(train_input, train_target))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;테스트 평가:&quot;</span>, knr.score(train_input, train_target))</span><br></pre></td></tr></table></figure>
-
-<pre><code>훈련평가: 0.9698823289099254
-테스트 평가: 0.9698823289099254
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 이웃의 개수를 3으로 재지정 </span></span><br><span class="line">knr.n_neighbors = <span class="number">3</span></span><br><span class="line">knr.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;훈련 평가:&quot;</span>, knr.score(train_input, train_target))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;테스트 평가:&quot;</span>, knr.score(test_input, test_target))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<pre><code>훈련 평가: 0.9804899950518966
-테스트 평가: 0.9746459963987609
-</code></pre>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-06-29T08:00:21.794Z" title="2022. 6. 29. 오후 5:00:21">2022-06-29</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-06-29T08:00:21.795Z" title="2022. 6. 29. 오후 5:00:21">2022-06-29</time></span><span class="level-item">a minute read (About 123 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/06/29/hello-world/">Hello World</a></h1><div class="content"><p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/page/0/">Previous</a></div><div class="pagination-next"><a href="/page/2/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">15</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-07-04T08:40:00.000Z">2022-07-04</time></p><p class="title"><a href="/2022/07/04/day0704/">day0704_ml</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-07-01T08:30:00.000Z">2022-07-01</time></p><p class="title"><a href="/2022/07/01/day0701_ml_assignment_10MinsToPandas/">0701_ml_assignment</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-07-01T01:10:00.000Z">2022-07-01</time></p><p class="title"><a href="/2022/07/01/day0701_ml_ch3/">day0701_ml_ch3</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-07-01T01:10:00.000Z">2022-07-01</time></p><p class="title"><a href="/2022/07/01/day0701_ml_ch4/">day0701_ml_ch4</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-06-30T10:42:00.000Z">2022-06-30</time></p><p class="title"><a href="/2022/06/30/practise_3/">practise_3</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/07/"><span class="level-start"><span class="level-item">July 2022</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/06/"><span class="level-start"><span class="level-item">June 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/page/0/">Previous</a></div><div class="pagination-next"><a href="/page/2/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">17</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-07-05T07:01:00.000Z">2022-07-05</time></p><p class="title"><a href="/2022/07/05/0705_PycaretSample/">day0705_pycaretsample</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-07-05T07:00:00.000Z">2022-07-05</time></p><p class="title"><a href="/2022/07/05/Day0705_ch05_ch6/">day0705_ch5_ch6</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-07-04T08:40:00.000Z">2022-07-04</time></p><p class="title"><a href="/2022/07/04/day0704/">day0704_ml</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-07-01T08:30:00.000Z">2022-07-01</time></p><p class="title"><a href="/2022/07/01/day0701_ml_assignment_10MinsToPandas/">0701_ml_assignment</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-07-01T01:10:00.000Z">2022-07-01</time></p><p class="title"><a href="/2022/07/01/day0701_ml_ch3/">day0701_ml_ch3</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/07/"><span class="level-start"><span class="level-item">July 2022</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/06/"><span class="level-start"><span class="level-item">June 2022</span></span><span class="level-end"><span class="level-item tag">11</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
